@@ -186,11 +186,33 @@ const Events = (function() {
         handleKeyboardNavigation();
         handleTouchEvents(slidesContainer);
         
-        // Предотвращаем контекстное меню на мобильных устройствах
-        slidesContainer.on('contextmenu', function(e) {
+        // Убрано блокирование контекстного меню для работы правой кнопки мыши
+        
+        // Обработчик для кнопки расширения презентации
+        $('.expand-btn').on('click', function(e) {
             e.preventDefault();
-            return false;
+            e.stopPropagation();
+            togglePresentationExpand();
         });
+    }
+    
+    // Функция переключения расширения презентации
+    function togglePresentationExpand() {
+        const container = $('.presentation-container');
+        const expandBtn = $('.expand-btn');
+        const isExpanded = container.hasClass('expanded');
+        
+        if (isExpanded) {
+            // Возвращаем к обычному размеру
+            container.removeClass('expanded');
+            expandBtn.removeClass('expanded');
+            console.log('📐 Презентация возвращена к обычному размеру');
+        } else {
+            // Расширяем на весь экран
+            container.addClass('expanded');
+            expandBtn.addClass('expanded');
+            console.log('🖥️ Презентация расширена на весь экран');
+        }
     }
     
     // Публичные методы

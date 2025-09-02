@@ -114,7 +114,7 @@ body::before {
     transform: translateX(100%);
     transition: all 0.8s ease;
     z-index: 1;
-    pointer-events: none;
+    /* pointer-events: none; */
     visibility: hidden;
 }
 
@@ -321,7 +321,7 @@ body::before {
 
 /* Индивидуальные фоновые изображения для каждого слайда */
 .slide:nth-child(1).active::before { background-image: url('images/title_slide_ai_media.png'); }
-.slide:nth-child(2).active::before { background-image: url('images/hook_llm_chat.jpg'); }
+.slide:nth-child(2).active::before { background-image: url('images/hook_llm_chat.jpg'); opacity: 0.15; }
 .slide:nth-child(3).active::before { background-image: url('images/vision_knowledge_source.png'); }
 .slide:nth-child(4).active::before { background-image: url('images/solution_pipeline_diagram.png'); }
 .slide:nth-child(5).active::before { background-image: url('images/llm_structured_data.png'); }
@@ -767,7 +767,7 @@ body::before {
 
 .glitch-text {
     position: relative;
-    font-size: 3rem !important;
+    font-size: 2.5rem !important;
     font-weight: 800 !important;
     color: #667eea;
     text-transform: uppercase;
@@ -969,7 +969,7 @@ body::before {
 
 .stat-value {
     display: block;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 800;
     color: #667eea;
     margin-bottom: 5px;
@@ -1188,4 +1188,118 @@ body::before {
     .trend-label {
         color: #ffffff;
     }
+}
+
+/* Стили для кнопки расширения презентации */
+.expand-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(102, 126, 234, 0.6);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    z-index: 30;
+    opacity: 0.3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.expand-btn:hover {
+    opacity: 0.8;
+    background: rgba(102, 126, 234, 0.2);
+    color: #667eea;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.expand-btn:active {
+    transform: scale(0.95);
+}
+
+.expand-btn.expanded {
+    background: rgba(102, 126, 234, 0.3);
+    color: #667eea;
+    opacity: 0.8;
+}
+
+/* Адаптивность для кнопки расширения */
+@media (max-width: 768px) {
+    .expand-btn {
+        width: 28px;
+        height: 28px;
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .expand-btn svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .expand-btn {
+        width: 24px;
+        height: 24px;
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .expand-btn svg {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* Стили для расширенного состояния презентации */
+.presentation-container.expanded {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    border-radius: 0 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 1000 !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+.presentation-container.expanded .slides-container {
+    height: calc(100vh - 90px) !important;
+}
+
+.presentation-container.expanded .navigation {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+}
+
+/* Анимация для плавного расширения */
+.presentation-container {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Кнопка в расширенном режиме (остается в нижнем правом углу) */
+.presentation-container.expanded .expand-btn {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    opacity: 0.8 !important;
+    background: rgba(102, 126, 234, 0.3) !important;
+    color: #667eea !important;
+}
+
+.presentation-container.expanded .expand-btn:hover {
+    background: rgba(102, 126, 234, 0.4) !important;
+    opacity: 1 !important;
 }
