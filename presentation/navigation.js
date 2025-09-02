@@ -25,64 +25,24 @@ const Navigation = (function() {
         
         Presentation.setAnimating(true);
         
-        // Определяем направление анимации
-        if (direction === 'auto') {
-            direction = slideIndex > currentSlide ? 'next' : 'prev';
-        }
-        
         const currentSlideElement = slides.eq(currentSlide);
         const nextSlideElement = slides.eq(slideIndex);
         
-        // Настройка CSS классов для анимации
-        currentSlideElement.removeClass('active').addClass('exiting');
-        nextSlideElement.removeClass('prev').addClass('entering');
+        // Просто меняем классы - CSS сделает всю анимацию
+        currentSlideElement.removeClass('active');
+        nextSlideElement.addClass('active');
         
-        // Анимация перехода с использованием jQuery
-        const animationDuration = 800;
+        // Обновляем состояние
+        Presentation.setCurrentSlide(slideIndex);
+        Presentation.updateNavigationState();
         
-        // Анимация выхода текущего слайда
-        currentSlideElement.animate(
-            {
-                opacity: 0,
-                translateX: direction === 'next' ? '-100%' : '100%',
-                scale: 0.95
-            },
-            {
-                duration: animationDuration,
-                easing: 'easeInOutQuint',
-                complete: function() {
-                    currentSlideElement.removeClass('exiting').addClass('prev');
-                }
-            }
-        );
+        // Анимация появления контента на новом слайде
+        Animations.animateSlideContent(nextSlideElement);
         
-        // Анимация входа нового слайда
-        nextSlideElement.css({
-            opacity: 0,
-            translateX: direction === 'next' ? '100%' : '-100%',
-            scale: 0.95
-        });
-        
-        nextSlideElement.animate(
-            {
-                opacity: 1,
-                translateX: '0%',
-                scale: 1
-            },
-            {
-                duration: animationDuration,
-                easing: 'easeInOutQuint',
-                complete: function() {
-                    nextSlideElement.removeClass('entering').addClass('active');
-                    Presentation.setCurrentSlide(slideIndex);
-                    Presentation.updateNavigationState();
-                    Presentation.setAnimating(false);
-                    
-                    // Анимация появления контента на новом слайде
-                    Animations.animateSlideContent(nextSlideElement);
-                }
-            }
-        );
+        // Сбрасываем флаг анимации после завершения CSS transition
+        setTimeout(function() {
+            Presentation.setAnimating(false);
+        }, 800);
     }
     
     // Переход к первому слайду

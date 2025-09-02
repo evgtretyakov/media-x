@@ -18,8 +18,21 @@ const Presentation = (function() {
     let progressBar;
     let slidesContainer;
     
-    // Предзагружаемые изображения
-    const imagesToPreload = [];
+    // Предзагружаемые изображения для всех слайдов
+    const imagesToPreload = [
+        'images/title_slide_ai_media.png',
+        'images/hook_llm_chat.jpg',
+        'images/vision_knowledge_source.png',
+        'images/solution_pipeline_diagram.png',
+        'images/llm_structured_data.png',
+        'images/ui_dashboard_mockup.png',
+        'images/tech_stack_icons.png',
+        'images/why_now_rocket.png',
+        'images/roadmap_timeline.png',
+        'images/team_collaboration.png',
+        'images/request_growth_chart.png',
+        'images/qna_contact.png'
+    ];
     
     // Инициализация презентации
     function initPresentation() {
@@ -35,6 +48,16 @@ const Presentation = (function() {
         
         // Установка общего количества слайдов
         totalSlidesElement.text(totalSlides);
+        
+        // Гарантируем, что только первый слайд активен, остальные скрыты
+        slides.each(function(index) {
+            const slide = $(this);
+            if (index === 0) {
+                slide.addClass('active').removeClass('prev');
+            } else {
+                slide.removeClass('active').addClass('prev');
+            }
+        });
         
         // Предзагрузка изображений
         preloadImages();

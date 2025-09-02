@@ -98,9 +98,9 @@ body::before {
     overflow: hidden;
 }
 
-/* Стили для слайдов */
+/* Стили для слайдов - упрощенная версия */
 .slide {
-    position: absolute;
+    position: absolute !important;
     top: 0;
     left: 0;
     width: 100%;
@@ -111,21 +111,19 @@ body::before {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transform: translateX(100%) scale(0.95);
-    /* transition удален чтобы избежать конфликта с jQuery анимациями */
-    perspective: 1000px;
+    transform: translateX(100%);
+    transition: all 0.8s ease;
+    z-index: 1;
+    pointer-events: none;
+    visibility: hidden;
 }
 
 .slide.active {
     opacity: 1;
-    transform: translateX(0) scale(1);
+    transform: translateX(0);
     z-index: 10;
-}
-
-.slide.prev {
-    transform: translateX(-100%) scale(0.95);
-    opacity: 0;
-    z-index: 5;
+    pointer-events: auto;
+    visibility: visible;
 }
 
 /* Анимации появления контента внутри слайдов */
@@ -297,6 +295,71 @@ body::before {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Стили для фоновых изображений слайдов */
+.slide {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Фоновые изображения только для активного слайда */
+.slide.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.25;
+    z-index: -1;
+    transition: opacity 0.8s ease;
+}
+
+/* Индивидуальные фоновые изображения для каждого слайда */
+.slide:nth-child(1).active::before { background-image: url('images/title_slide_ai_media.png'); }
+.slide:nth-child(2).active::before { background-image: url('images/hook_llm_chat.jpg'); }
+.slide:nth-child(3).active::before { background-image: url('images/vision_knowledge_source.png'); }
+.slide:nth-child(4).active::before { background-image: url('images/solution_pipeline_diagram.png'); }
+.slide:nth-child(5).active::before { background-image: url('images/llm_structured_data.png'); }
+.slide:nth-child(6).active::before { background-image: url('images/ui_dashboard_mockup.png'); }
+.slide:nth-child(7).active::before { background-image: url('images/tech_stack_icons.png'); }
+.slide:nth-child(8).active::before { background-image: url('images/why_now_rocket.png'); }
+.slide:nth-child(9).active::before { background-image: url('images/roadmap_timeline.png'); }
+.slide:nth-child(10).active::before { background-image: url('images/team_collaboration.png'); }
+.slide:nth-child(11).active::before { background-image: url('images/request_growth_chart.png'); }
+.slide:nth-child(12).active::before { background-image: url('images/qna_contact.png'); }
+
+/* Затемнение фона для лучшей читаемости текста */
+.slide.active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 0.7) 50%,
+        rgba(255, 255, 255, 0.9) 100%);
+    z-index: -2;
+}
+
+/* Темная тема для фонов */
+@media (prefers-color-scheme: dark) {
+    .slide.active::after {
+        background: linear-gradient(135deg,
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(0, 0, 0, 0.7) 50%,
+            rgba(0, 0, 0, 0.85) 100%);
+    }
+    
+    .slide.active::before {
+        opacity: 0.3;
+    }
 }
 
 /* Заглушка для изображения */
@@ -489,6 +552,17 @@ body::before {
         font-size: 2.2rem;
     }
     
+    .slide.active::before {
+        opacity: 0.2;
+    }
+    
+    .slide.active::after {
+        background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.95) 0%,
+            rgba(255, 255, 255, 0.8) 50%,
+            rgba(255, 255, 255, 0.95) 100%);
+    }
+    
     .placeholder-image {
         width: 280px;
         height: 180px;
@@ -516,6 +590,19 @@ body::before {
     
     .slide p {
         font-size: 1.1rem;
+    }
+    
+    .slide.active::before {
+        opacity: 0.15;
+        background-size: contain;
+        background-position: center center;
+    }
+    
+    .slide.active::after {
+        background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.97) 0%,
+            rgba(255, 255, 255, 0.85) 50%,
+            rgba(255, 255, 255, 0.97) 100%);
     }
     
     .content-wrapper {
@@ -587,6 +674,19 @@ body::before {
         margin-bottom: 8px;
     }
     
+    .slide.active::before {
+        opacity: 0.12;
+        background-size: 80% auto;
+        background-position: center 30%;
+    }
+    
+    .slide.active::after {
+        background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.98) 0%,
+            rgba(255, 255, 255, 0.9) 50%,
+            rgba(255, 255, 255, 0.98) 100%);
+    }
+    
     .placeholder-image {
         width: 200px;
         height: 140px;
@@ -634,8 +734,458 @@ body::before {
         background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
     }
     
+    .slide::after {
+        background: linear-gradient(135deg,
+            rgba(0, 0, 0, 0.88) 0%,
+            rgba(0, 0, 0, 0.75) 50%,
+            rgba(0, 0, 0, 0.88) 100%);
+    }
+    
+    .slide::before {
+        opacity: 0.25;
+    }
+    
+    .slide.active::before {
+        opacity: 0.35;
+    }
+    
     .navigation {
         background: rgba(0, 0, 0, 0.9);
         border-top-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Стили для второго слайда - Вызов */
+.challenge-slide {
+    padding: 40px !important;
+}
+
+.slide-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.glitch-text {
+    position: relative;
+    font-size: 3rem !important;
+    font-weight: 800 !important;
+    color: #667eea;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px !important;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-text::before {
+    animation: glitch-animation 2s infinite;
+    color: #ff6b6b;
+    z-index: -1;
+}
+
+.glitch-text::after {
+    animation: glitch-animation 1.5s infinite reverse;
+    color: #4ecdc4;
+    z-index: -2;
+}
+
+@keyframes glitch-animation {
+    0% { transform: translate(0); }
+    20% { transform: translate(-5px, 5px); }
+    40% { transform: translate(-5px, -5px); }
+    60% { transform: translate(5px, 5px); }
+    80% { transform: translate(5px, -5px); }
+    100% { transform: translate(0); }
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.challenge-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.ai-chat-visual {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.chat-interface {
+    width: 300px;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.chat-title {
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message {
+    padding: 12px 16px;
+    border-radius: 18px;
+    max-width: 80%;
+    animation: message-appear 0.6s ease-out;
+}
+
+.user-message {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.ai-message {
+    align-self: flex-start;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ecf0f1;
+    backdrop-filter: blur(10px);
+}
+
+.message-content {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.challenge-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.challenge-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+    padding: 30px 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.challenge-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.challenge-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(102, 126, 234, 0.2);
+}
+
+.challenge-card:hover::before {
+    left: 100%;
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: float-icon 3s ease-in-out infinite;
+}
+
+@keyframes float-icon {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+.challenge-card h3 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.challenge-card p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.card-stats {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #667eea;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.slide-footer {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.trend-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 25px;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.trend-label {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.trend-graph {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 40px;
+}
+
+.graph-bar {
+    width: 8px;
+    background: linear-gradient(to top, #667eea, #764ba2);
+    border-radius: 4px 4px 0 0;
+    height: calc(var(--value) * 0.4);
+    animation: graph-pulse 2s ease-in-out infinite;
+    animation-delay: calc(var(--index, 0) * 0.2s);
+}
+
+.graph-bar:nth-child(1) { --index: 1; }
+.graph-bar:nth-child(2) { --index: 2; }
+.graph-bar:nth-child(3) { --index: 3; }
+.graph-bar:nth-child(4) { --index: 4; }
+
+@keyframes graph-pulse {
+    0%, 100% { height: calc(var(--value) * 0.4); }
+    50% { height: calc(var(--value) * 0.45); }
+}
+
+@keyframes message-appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Анимации для появления элементов слайда */
+.challenge-slide.active .chat-interface {
+    animation: slide-in-left 0.8s ease-out 0.5s both;
+}
+
+.challenge-slide.active .challenge-card:nth-child(1) {
+    animation: slide-in-right 0.8s ease-out 0.7s both;
+}
+
+.challenge-slide.active .challenge-card:nth-child(2) {
+    animation: slide-in-right 0.8s ease-out 0.9s both;
+}
+
+.challenge-slide.active .challenge-card:nth-child(3) {
+    animation: slide-in-right 0.8s ease-out 1.1s both;
+}
+
+.challenge-slide.active .trend-indicator {
+    animation: slide-in-up 0.8s ease-out 1.3s both;
+}
+
+@keyframes slide-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность для второго слайда */
+@media (max-width: 1024px) {
+    .challenge-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .challenge-cards {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .glitch-text {
+        font-size: 2.5rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .challenge-slide {
+        padding: 30px 20px !important;
+    }
+    
+    .glitch-text {
+        font-size: 2rem !important;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .chat-interface {
+        width: 250px;
+    }
+    
+    .challenge-card {
+        padding: 20px 15px;
+    }
+    
+    .card-icon {
+        font-size: 2.5rem;
+    }
+    
+    .trend-indicator {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .glitch-text {
+        font-size: 1.6rem !important;
+    }
+    
+    .challenge-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .chat-interface {
+        width: 220px;
+        padding: 15px;
+    }
+    
+    .card-icon {
+        font-size: 2rem;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+    }
+}
+
+/* Темная тема для второго слайда */
+@media (prefers-color-scheme: dark) {
+    .challenge-card {
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .challenge-card h3 {
+        color: #ffffff;
+    }
+    
+    .challenge-card p {
+        color: #cccccc;
+    }
+    
+    .trend-indicator {
+        background: rgba(0, 0, 0, 0.8);
+    }
+    
+    .trend-label {
+        color: #ffffff;
     }
 }

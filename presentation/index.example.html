@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анимированная Презентация</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Прогресс бар -->
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <div class="slides-container">
+            <!-- Слайд 1: Заголовок -->
+            <div class="slide active">
+                <h1>Добро пожаловать в презентацию</h1>
+                <p>Используйте кнопки навигации или клавиши стрелок для перехода между слайдами</p>
+            </div>
+
+            <!-- Слайд 2: Текст с изображением -->
+            <div class="slide">
+                <h2>Второй слайд</h2>
+                <div class="content-wrapper">
+                    <div class="text-content">
+                        <p>Это пример текстового контента с изображением. Здесь можно разместить важную информацию о вашем проекте или продукте.</p>
+                        <ul>
+                            <li>Пункт 1: Важная особенность</li>
+                            <li>Пункт 2: Другая особенность</li>
+                            <li>Пункт 3: Третья особенность</li>
+                        </ul>
+                    </div>
+                    <div class="image-content">
+                        <div class="placeholder-image">Изображение</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Слайд 3: Только текст -->
+            <div class="slide">
+                <h2>Текстовый слайд</h2>
+                <p>Это слайд содержит только текстовую информацию. Идеально подходит для подробного описания концепций или представления данных.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.</p>
+            </div>
+
+            <!-- Слайд 4: Завершающий -->
+            <div class="slide">
+                <h2>Спасибо за внимание!</h2>
+                <p>Это завершающий слайд презентации.</p>
+                <p>Вы можете легко добавить новые слайды, скопировав структуру существующих.</p>
+            </div>
+        </div>
+
+        <!-- Кнопки навигации -->
+        <div class="navigation">
+            <button class="nav-btn prev-btn" aria-label="Предыдущий слайд">←</button>
+            <div class="slide-indicator">
+                <span class="current-slide">1</span> / <span class="total-slides">4</span>
+            </div>
+            <button class="nav-btn next-btn" aria-label="Следующий слайд">→</button>
+        </div>
+    </div>
+
+    <!-- Подключение jQuery и модулей -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="init.js"></script>
+    <script src="navigation.js"></script>
+    <script src="animations.js"></script>
+    <script src="events.js"></script>
+    <script src="utils.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

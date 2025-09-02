@@ -9,22 +9,19 @@ const Animations = (function() {
             const element = $(this);
             const delay = index * 200;
             
+            // Сбрасываем стили для анимации
             element.css({
                 opacity: 0,
                 transform: 'translateY(30px)'
             });
             
+            // Используем CSS transition вместо jQuery animate
             setTimeout(function() {
-                element.animate(
-                    {
-                        opacity: 1,
-                        transform: 'translateY(0)'
-                    },
-                    {
-                        duration: 600,
-                        easing: 'easeOutQuart'
-                    }
-                );
+                element.css({
+                    opacity: 1,
+                    transform: 'translateY(0)',
+                    transition: 'all 0.6s ease-out'
+                });
             }, delay);
         });
     }
