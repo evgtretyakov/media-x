@@ -1,0 +1,593 @@
+
+/* Стили для четвертого слайда - Решение */
+.solution-slide {
+    padding: 40px !important;
+}
+
+.solution-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.solution-title {
+    font-size: 2.8rem !important;
+    font-weight: 800 !important;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px !important;
+    letter-spacing: -0.5px;
+}
+
+.solution-subtitle {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
+}
+
+.pipeline-container {
+    max-width: 1200px;
+    margin: 0 auto 50px;
+    position: relative;
+}
+
+.pipeline-track {
+    position: relative;
+    height: 200px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border-radius: 25px;
+    border: 2px dashed rgba(102, 126, 234, 0.3);
+    margin: 0 50px;
+    overflow: hidden;
+}
+
+.pipeline-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg,
+        rgba(102, 126, 234, 0.2) 0%,
+        rgba(118, 75, 162, 0.2) 50%,
+        rgba(240, 147, 251, 0.2) 100%);
+    border-radius: 25px;
+    transition: width 1.5s ease-in-out;
+    z-index: 1;
+}
+
+.pipeline-stage {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 2;
+    opacity: 0.5;
+    transition: all 0.5s ease;
+}
+
+.pipeline-stage[data-stage="1"] { left: 10%; }
+.pipeline-stage[data-stage="2"] { left: 35%; }
+.pipeline-stage[data-stage="3"] { left: 60%; }
+.pipeline-stage[data-stage="4"] { left: 85%; }
+
+.pipeline-stage.active {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.pipeline-stage.active .stage-icon {
+    transform: scale(1.2);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+}
+
+.stage-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stage-icon::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: rotate(45deg);
+    animation: shimmer 3s infinite;
+}
+
+.stage-content {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    min-width: 200px;
+}
+
+.stage-content h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.stage-content p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.stage-stats {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    color: #667eea;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.stage-connector {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, transparent);
+    transform: translateY(-50%);
+}
+
+.stage-connector::after {
+    content: '→';
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #667eea;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.pipeline-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 30px;
+}
+
+.indicator-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: rgba(102, 126, 234, 0.3);
+    border: 2px solid rgba(102, 126, 234, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.indicator-dot.active {
+    background: #667eea;
+    border-color: #667eea;
+    transform: scale(1.3);
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+}
+
+.indicator-dot::before {
+    content: attr(data-step);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #667eea;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.indicator-dot.active::before {
+    opacity: 1;
+}
+
+.indicator-dot:hover {
+    transform: scale(1.2);
+    background: rgba(102, 126, 234, 0.6);
+}
+
+.solution-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+    padding: 30px 25px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(102, 126, 234, 0.2);
+}
+
+.feature-card:hover::before {
+    left: 100%;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: float-icon 3s ease-in-out infinite;
+}
+
+.feature-card h4 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.feature-card p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.feature-metric {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #667eea;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    padding: 15px;
+    border-radius: 15px;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+}
+
+/* Анимации для слайда Решение */
+.solution-slide.active .solution-title {
+    animation: slide-in-from-top 0.8s ease-out 0.4s both;
+}
+
+.solution-slide.active .solution-subtitle {
+    animation: slide-in-from-bottom 0.8s ease-out 0.6s both;
+}
+
+.solution-slide.active .pipeline-track {
+    animation: fade-in 0.8s ease-out 0.8s both;
+}
+
+.solution-slide.active .pipeline-progress {
+    animation: fill-progress 2s ease-in-out 1.2s both;
+}
+
+.solution-slide.active .pipeline-stage[data-stage="1"] {
+    animation: slide-in-from-left 0.8s ease-out 1.4s both;
+}
+
+.solution-slide.active .pipeline-stage[data-stage="2"] {
+    animation: slide-in-from-left 0.8s ease-out 1.6s both;
+}
+
+.solution-slide.active .pipeline-stage[data-stage="3"] {
+    animation: slide-in-from-left 0.8s ease-out 1.8s both;
+}
+
+.solution-slide.active .pipeline-stage[data-stage="4"] {
+    animation: slide-in-from-left 0.8s ease-out 2.0s both;
+}
+
+.solution-slide.active .pipeline-indicator {
+    animation: fade-in 0.8s ease-out 2.2s both;
+}
+
+.solution-slide.active .feature-card:nth-child(1) {
+    animation: slide-in-from-bottom 0.8s ease-out 2.4s both;
+}
+
+.solution-slide.active .feature-card:nth-child(2) {
+    animation: slide-in-from-bottom 0.8s ease-out 2.6s both;
+}
+
+.solution-slide.active .feature-card:nth-child(3) {
+    animation: slide-in-from-bottom 0.8s ease-out 2.8s both;
+}
+
+@keyframes fill-progress {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+@keyframes slide-in-from-top {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) rotateX(-45deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+@keyframes slide-in-from-bottom {
+    from {
+        opacity: 0;
+        transform: translateY(50px) rotateX(45deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+@keyframes slide-in-from-left {
+    from {
+        opacity: 0;
+        transform: translateX(-50px) translateY(-50%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) translateY(-50%);
+    }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Адаптивность для слайда Решение */
+@media (max-width: 1024px) {
+    .pipeline-track {
+        height: 180px;
+        margin: 0 30px;
+    }
+    
+    .pipeline-stage {
+        gap: 15px;
+    }
+    
+    .stage-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+    }
+    
+    .stage-content {
+        padding: 15px;
+        min-width: 180px;
+    }
+    
+    .solution-features {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .solution-slide {
+        padding: 30px 20px !important;
+    }
+    
+    .solution-title {
+        font-size: 2.2rem !important;
+    }
+    
+    .solution-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .pipeline-track {
+        height: 150px;
+        margin: 0 20px;
+    }
+    
+    .pipeline-stage {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .stage-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .stage-content {
+        min-width: 120px;
+        padding: 12px;
+    }
+    
+    .stage-content h3 {
+        font-size: 1rem;
+    }
+    
+    .stage-content p {
+        font-size: 0.8rem;
+    }
+    
+    .stage-connector {
+        display: none;
+    }
+    
+    .pipeline-indicator {
+        gap: 40px;
+    }
+    
+    .solution-features {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+    
+    .feature-card {
+        padding: 25px 20px;
+    }
+    
+    .feature-icon {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .solution-title {
+        font-size: 1.8rem !important;
+    }
+    
+    .pipeline-track {
+        height: 120px;
+        margin: 0 10px;
+    }
+    
+    .pipeline-stage[data-stage="1"] { left: 5%; }
+    .pipeline-stage[data-stage="2"] { left: 30%; }
+    .pipeline-stage[data-stage="3"] { left: 55%; }
+    .pipeline-stage[data-stage="4"] { left: 80%; }
+    
+    .stage-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .stage-content {
+        min-width: 100px;
+        padding: 10px;
+    }
+    
+    .stage-content h3 {
+        font-size: 0.9rem;
+    }
+    
+    .stage-content p {
+        font-size: 0.7rem;
+    }
+    
+    .stat {
+        font-size: 0.7rem;
+        padding: 2px 6px;
+    }
+    
+    .pipeline-indicator {
+        gap: 30px;
+    }
+    
+    .indicator-dot {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .feature-card {
+        padding: 20px 15px;
+    }
+    
+    .feature-icon {
+        font-size: 2rem;
+    }
+    
+    .feature-card h4 {
+        font-size: 1.1rem;
+    }
+    
+    .feature-card p {
+        font-size: 0.9rem;
+    }
+    
+    .feature-metric {
+        font-size: 1.5rem;
+        padding: 10px;
+    }
+}
+
+/* Темная тема для слайда Решение */
+@media (prefers-color-scheme: dark) {
+    .stage-content {
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .stage-content h3 {
+        color: #ffffff;
+    }
+    
+    .stage-content p {
+        color: #cccccc;
+    }
+    
+    .stat {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+        border-color: rgba(102, 126, 234, 0.3);
+    }
+    
+    .feature-card {
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .feature-card h4 {
+        color: #ffffff;
+    }
+    
+    .feature-card p {
+        color: #cccccc;
+    }
+    
+    .feature-metric {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+        border-color: rgba(102, 126, 234, 0.3);
+    }
+    
+    .pipeline-track {
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05));
+        border-color: rgba(102, 126, 234, 0.2);
+    }
+}
