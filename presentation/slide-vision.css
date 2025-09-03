@@ -303,11 +303,11 @@
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 25px;
     }
-    
+
     .vision-title {
         font-size: 2.5rem !important;
     }
-    
+
     .card-icon {
         font-size: 3.5rem;
     }
@@ -317,32 +317,32 @@
     .vision-slide {
         padding: 30px 20px !important;
     }
-    
+
     .vision-title {
         font-size: 2.2rem !important;
     }
-    
+
     .vision-subtitle {
         font-size: 1.1rem;
     }
-    
+
     .vision-cards {
         grid-template-columns: 1fr;
         max-width: 400px;
     }
-    
+
     .card-icon {
         font-size: 3rem;
     }
-    
+
     .vision-connector {
         display: none;
     }
-    
+
     .ai-pulse {
         padding: 12px 20px;
     }
-    
+
     .pulse-text {
         font-size: 1rem;
     }
@@ -352,19 +352,19 @@
     .vision-title {
         font-size: 1.8rem !important;
     }
-    
+
     .vision-card {
         padding: 25px 20px;
     }
-    
+
     .card-icon {
         font-size: 2.5rem;
     }
-    
+
     .card-content h3 {
         font-size: 1.2rem;
     }
-    
+
     .card-content p {
         font-size: 0.95rem;
     }
@@ -376,24 +376,24 @@
         background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
         border-color: rgba(255, 255, 255, 0.1);
     }
-    
+
     .vision-card h3 {
         color: #ffffff;
     }
-    
+
     .vision-card p {
         color: #cccccc;
     }
-    
+
     .stat-badge {
         background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
         border-color: rgba(102, 126, 234, 0.3);
     }
-    
+
     .ai-pulse {
         background: rgba(0, 0, 0, 0.8);
     }
-    
+
     .pulse-text {
         color: #ffffff;
     }
