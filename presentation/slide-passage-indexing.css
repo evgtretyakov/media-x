@@ -1,0 +1,551 @@
+/* Стили для слайда Passage Indexing с улучшенной схемой */
+.passage-indexing-enhanced-slide {
+    padding: 40px !important;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.98) 0%,
+        rgba(248, 249, 252, 0.96) 50%,
+        rgba(255, 255, 255, 0.98) 100%);
+}
+
+.passage-indexing-enhanced-slide .modern-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.passage-indexing-enhanced-slide .modern-title {
+    font-size: 3.2rem !important;
+    font-weight: 800 !important;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px !important;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+.passage-indexing-enhanced-slide .modern-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.passage-schema-container {
+    max-width: 1000px;
+    margin: 0 auto 40px;
+    position: relative;
+}
+
+.passage-schema-image {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.passage-schema-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 35px 70px rgba(102, 126, 234, 0.25);
+}
+
+.schema-description {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+    padding: 30px;
+    border-radius: 20px;
+    margin: 30px auto;
+    max-width: 900px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.schema-description h3 {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.description-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.description-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.description-point {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 4px solid #667eea;
+    transition: all 0.3s ease;
+}
+
+.description-point:hover {
+    transform: translateX(5px);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+}
+
+.description-point h4 {
+    font-size: 1.2rem;
+    color: #667eea;
+    margin-bottom: 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.description-point h4::before {
+    content: '🎯';
+    font-size: 1.4rem;
+}
+
+.description-point p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.passage-benefits-enhanced {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.benefit-card-enhanced {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+    padding: 30px 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.benefit-card-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.benefit-card-enhanced:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(102, 126, 234, 0.25);
+}
+
+.benefit-card-enhanced:hover::before {
+    left: 100%;
+}
+
+.benefit-icon-enhanced {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: float-icon 3s ease-in-out infinite;
+}
+
+.benefit-card-enhanced h4 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.benefit-card-enhanced p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.benefit-metric-enhanced {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #667eea;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    padding: 15px;
+    border-radius: 15px;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+}
+
+.passage-conclusion {
+    text-align: center;
+    margin-top: 50px;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    border-radius: 25px;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.conclusion-text {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.conclusion-text strong {
+    color: #667eea;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Анимации появления для слайда */
+.passage-indexing-enhanced-slide.active .modern-title {
+    animation: slide-in-from-top 0.8s ease-out 0.4s both;
+}
+
+.passage-indexing-enhanced-slide.active .modern-subtitle {
+    animation: slide-in-from-bottom 0.8s ease-out 0.6s both;
+}
+
+.passage-indexing-enhanced-slide.active .passage-schema-image {
+    animation: scale-in 0.8s ease-out 0.8s both;
+}
+
+.passage-indexing-enhanced-slide.active .schema-description {
+    animation: fade-in 0.8s ease-out 1.0s both;
+}
+
+.passage-indexing-enhanced-slide.active .description-point:nth-child(1) {
+    animation: slide-in-from-left 0.8s ease-out 1.2s both;
+}
+
+.passage-indexing-enhanced-slide.active .description-point:nth-child(2) {
+    animation: slide-in-from-right 0.8s ease-out 1.4s both;
+}
+
+.passage-indexing-enhanced-slide.active .description-point:nth-child(3) {
+    animation: slide-in-from-left 0.8s ease-out 1.6s both;
+}
+
+.passage-indexing-enhanced-slide.active .description-point:nth-child(4) {
+    animation: slide-in-from-right 0.8s ease-out 1.8s both;
+}
+
+.passage-indexing-enhanced-slide.active .benefit-card-enhanced:nth-child(1) {
+    animation: slide-in-from-bottom 0.8s ease-out 2.0s both;
+}
+
+.passage-indexing-enhanced-slide.active .benefit-card-enhanced:nth-child(2) {
+    animation: slide-in-from-bottom 0.8s ease-out 2.2s both;
+}
+
+.passage-indexing-enhanced-slide.active .benefit-card-enhanced:nth-child(3) {
+    animation: slide-in-from-bottom 0.8s ease-out 2.4s both;
+}
+
+.passage-indexing-enhanced-slide.active .passage-conclusion {
+    animation: slide-in-up 0.8s ease-out 2.6s both;
+}
+
+@keyframes scale-in {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Стили для блока готовности к Passage Indexing */
+.readiness-section {
+    max-width: 1000px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.readiness-section h3 {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    margin-bottom: 30px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.readiness-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.readiness-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+    padding: 25px 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.readiness-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(102, 126, 234, 0.2);
+}
+
+.readiness-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    animation: float-icon 3s ease-in-out infinite;
+}
+
+.readiness-card h4 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.readiness-card p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Анимации для блока готовности */
+.passage-indexing-enhanced-slide.active .readiness-section h3 {
+    animation: slide-in-from-top 0.8s ease-out 2.0s both;
+}
+
+.passage-indexing-enhanced-slide.active .readiness-card:nth-child(1) {
+    animation: slide-in-from-left 0.8s ease-out 2.2s both;
+}
+
+.passage-indexing-enhanced-slide.active .readiness-card:nth-child(2) {
+    animation: slide-in-from-bottom 0.8s ease-out 2.4s both;
+}
+
+.passage-indexing-enhanced-slide.active .readiness-card:nth-child(3) {
+    animation: slide-in-from-right 0.8s ease-out 2.6s both;
+}
+
+.passage-indexing-enhanced-slide.active .passage-conclusion {
+    animation: slide-in-up 0.8s ease-out 2.8s both;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .passage-indexing-enhanced-slide .modern-title {
+        font-size: 2.8rem !important;
+    }
+    
+    .description-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .passage-benefits-enhanced {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .readiness-cards {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .passage-indexing-enhanced-slide {
+        padding: 30px 20px !important;
+    }
+    
+    .passage-indexing-enhanced-slide .modern-title {
+        font-size: 2.2rem !important;
+    }
+    
+    .passage-indexing-enhanced-slide .modern-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .schema-description {
+        padding: 20px;
+    }
+    
+    .schema-description h3 {
+        font-size: 1.5rem;
+    }
+    
+    .benefit-card-enhanced {
+        padding: 25px 20px;
+    }
+    
+    .benefit-icon-enhanced {
+        font-size: 2.5rem;
+    }
+    
+    .benefit-metric-enhanced {
+        font-size: 1.8rem;
+    }
+    
+    .readiness-section h3 {
+        font-size: 1.5rem;
+    }
+    
+    .readiness-cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .readiness-card {
+        padding: 20px 15px;
+    }
+    
+    .readiness-icon {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .passage-indexing-enhanced-slide .modern-title {
+        font-size: 1.8rem !important;
+    }
+    
+    .passage-schema-image {
+        border-radius: 15px;
+    }
+    
+    .description-point {
+        padding: 15px;
+    }
+    
+    .description-point h4 {
+        font-size: 1.1rem;
+    }
+    
+    .passage-benefits-enhanced {
+        grid-template-columns: 1fr;
+    }
+    
+    .readiness-section h3 {
+        font-size: 1.3rem;
+    }
+    
+    .readiness-card {
+        padding: 15px 12px;
+    }
+    
+    .readiness-icon {
+        font-size: 1.8rem;
+    }
+    
+    .readiness-card h4 {
+        font-size: 1.1rem;
+    }
+    
+    .readiness-card p {
+        font-size: 0.9rem;
+    }
+    
+    .conclusion-text {
+        font-size: 1.1rem;
+    }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+    .passage-indexing-enhanced-slide {
+        background: linear-gradient(135deg,
+            rgba(0, 0, 0, 0.95) 0%,
+            rgba(0, 0, 0, 0.85) 50%,
+            rgba(0, 0, 0, 0.95) 100%);
+    }
+    
+    .schema-description {
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .schema-description h3 {
+        color: #ffffff;
+    }
+    
+    .description-point {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+    }
+    
+    .description-point h4 {
+        color: #ffffff;
+    }
+    
+    .description-point p {
+        color: #cccccc;
+    }
+    
+    .benefit-card-enhanced {
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .benefit-card-enhanced h4 {
+        color: #ffffff;
+    }
+    
+    .benefit-card-enhanced p {
+        color: #cccccc;
+    }
+    
+    .passage-conclusion {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.15));
+        border-color: rgba(102, 126, 234, 0.3);
+    }
+    
+    .conclusion-text {
+        color: #ffffff;
+    }
+
+    .readiness-card {
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .readiness-card h4 {
+        color: #ffffff;
+    }
+
+    .readiness-card p {
+        color: #cccccc;
+    }
+}
