@@ -331,7 +331,7 @@ body::before {
 .slide:nth-child(9).active::before { background-image: url('images/roadmap_timeline.png'); }
 .slide:nth-child(10).active::before { background-image: url('images/team_collaboration.png'); }
 .slide:nth-child(11).active::before { background-image: url('images/request_growth_chart.png'); }
-.slide:nth-child(12).active::before { background-image: url('images/qna_contact.png'); }
+.slide:nth-child(12).active::before { background-image: url('images/abstract-motion-design.png'); opacity: 0.2; }
 
 /* Затемнение фона для лучшей читаемости текста */
 .slide.active::after {
