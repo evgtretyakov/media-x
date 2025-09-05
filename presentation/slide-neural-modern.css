@@ -1,0 +1,555 @@
+/* Молодежный современный стиль для слайда 7 - Нейросети */
+.neural-modern-slide {
+    padding: 40px 30px !important;
+    background:
+        linear-gradient(135deg,
+            rgba(0, 0, 0, 0.92) 0%,
+            rgba(30, 30, 60, 0.92) 50%,
+            rgba(0, 0, 0, 0.92) 100%),
+        url('images/llm_structured_data.png');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.neural-modern-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(72, 219, 251, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 107, 107, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(118, 75, 162, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.neural-modern-slide::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+    transform: rotate(45deg);
+    animation: grid-move 20s linear infinite;
+    pointer-events: none;
+}
+
+/* Эффект частиц для фона */
+.neural-modern-slide .neural-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.neural-modern-slide .particle {
+    position: absolute;
+    background: rgba(72, 219, 251, 0.6);
+    border-radius: 50%;
+    animation: neural-particle-float 6s ease-in-out infinite;
+}
+
+.neural-modern-slide .particle:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    width: 4px;
+    height: 4px;
+    animation-delay: 0s;
+}
+
+.neural-modern-slide .particle:nth-child(2) {
+    top: 60%;
+    left: 80%;
+    width: 6px;
+    height: 6px;
+    animation-delay: 2s;
+    background: rgba(255, 107, 107, 0.6);
+}
+
+.neural-modern-slide .particle:nth-child(3) {
+    top: 40%;
+    left: 30%;
+    width: 3px;
+    height: 3px;
+    animation-delay: 4s;
+    background: rgba(255, 159, 243, 0.6);
+}
+
+.neural-modern-slide .particle:nth-child(4) {
+    top: 70%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    animation-delay: 1s;
+    background: rgba(254, 202, 87, 0.6);
+}
+
+.neural-modern-slide .particle:nth-child(5) {
+    top: 30%;
+    left: 70%;
+    width: 4px;
+    height: 4px;
+    animation-delay: 3s;
+    background: rgba(118, 75, 162, 0.6);
+}
+
+@keyframes neural-particle-float {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-20px) translateX(10px) scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+.neural-modern-header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.neural-modern-title {
+    font-size: 2.8rem !important;
+    font-weight: 900 !important;
+    background: linear-gradient(135deg, #48dbfb, #ff9ff3, #ff6b6b, #feca57);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px !important;
+    letter-spacing: -0.5px;
+    text-shadow: 0 0 30px rgba(72, 219, 251, 0.4),
+                 0 0 60px rgba(255, 159, 243, 0.3),
+                 0 0 90px rgba(255, 107, 107, 0.2);
+    animation: title-glow-pulse 3s ease-in-out infinite alternate;
+}
+
+.neural-modern-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.neural-modern-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.neural-feature-card {
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0.04) 100%);
+    padding: 25px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.neural-feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.12),
+        transparent);
+    transition: left 0.8s ease;
+}
+
+.neural-feature-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    border-color: rgba(72, 219, 251, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 0 2px rgba(72, 219, 251, 0.3),
+                0 0 35px rgba(72, 219, 251, 0.3);
+}
+
+.neural-feature-card:hover::before {
+    left: 100%;
+}
+
+.neural-card-icon {
+    font-size: 2.5rem;
+    margin-bottom: -12px;
+    display: inline-block;
+    text-shadow: 0 0 15px currentColor;
+    filter: drop-shadow(0 0 8px currentColor);
+}
+
+.neural-card-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #48dbfb, #ff9ff3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.3px;
+    text-align: center;
+}
+
+.neural-card-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 0;
+    text-align: center;
+    font-weight: 400;
+}
+
+.neural-card-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 15px;
+    background: linear-gradient(135deg,
+        rgba(72, 219, 251, 0.15),
+        rgba(255, 107, 107, 0.15));
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 15px;
+}
+
+.neural-stat-value {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #48dbfb;
+    text-shadow: 0 0 8px rgba(72, 219, 251, 0.4);
+}
+
+.neural-stat-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+/* Плавающие частицы для карточек */
+.neural-feature-card::after {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -30%;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(72, 219, 251, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: particle-float-neural 8s ease-in-out infinite;
+    z-index: -1;
+}
+
+.neural-feature-card:nth-child(even)::after {
+    top: 70%;
+    left: -25%;
+    animation-delay: 2s;
+    background: radial-gradient(circle, rgba(255, 107, 107, 0.2) 0%, transparent 70%);
+}
+
+.neural-feature-card:nth-child(3)::after {
+    top: 20%;
+    right: -20%;
+    animation-delay: 4s;
+    background: radial-gradient(circle, rgba(255, 159, 243, 0.2) 0%, transparent 70%);
+}
+
+.neural-feature-card:nth-child(4)::after {
+    bottom: -40%;
+    left: -20%;
+    animation-delay: 6s;
+    background: radial-gradient(circle, rgba(254, 202, 87, 0.2) 0%, transparent 70%);
+}
+
+/* Анимации */
+@keyframes title-glow-pulse {
+    0% {
+        text-shadow: 0 0 30px rgba(72, 219, 251, 0.4),
+                     0 0 60px rgba(255, 159, 243, 0.3),
+                     0 0 90px rgba(255, 107, 107, 0.2);
+    }
+    100% {
+        text-shadow: 0 0 45px rgba(72, 219, 251, 0.5),
+                     0 0 80px rgba(255, 159, 243, 0.4),
+                     0 0 120px rgba(255, 107, 107, 0.3);
+    }
+}
+
+@keyframes particle-float-neural {
+    0%, 100% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translate(12px, -12px) scale(1.2) rotate(90deg);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(24px, 0px) scale(1.1) rotate(180deg);
+        opacity: 0.4;
+    }
+    75% {
+        transform: translate(12px, 12px) scale(1.3) rotate(270deg);
+        opacity: 0.6;
+    }
+}
+
+@keyframes grid-move {
+    0% {
+        transform: rotate(45deg) translateX(0%) translateY(0%);
+    }
+    100% {
+        transform: rotate(45deg) translateX(50%) translateY(50%);
+    }
+}
+
+/* Анимации появления для слайда */
+.neural-modern-slide.active .neural-modern-title {
+    animation: slide-in-from-top-neural 0.9s ease-out 0.4s both,
+               title-glow-pulse 3s ease-in-out 1.3s infinite alternate;
+}
+
+.neural-modern-slide.active .neural-modern-subtitle {
+    animation: slide-in-from-bottom 0.8s ease-out 0.6s both;
+}
+
+.neural-modern-slide.active .neural-feature-card:nth-child(1) {
+    animation: slide-in-from-left-neural 0.9s ease-out 0.8s both;
+}
+
+.neural-modern-slide.active .neural-feature-card:nth-child(2) {
+    animation: slide-in-from-right-neural 0.9s ease-out 1.0s both;
+}
+
+.neural-modern-slide.active .neural-feature-card:nth-child(3) {
+    animation: slide-in-from-left-neural 0.9s ease-out 1.2s both;
+}
+
+.neural-modern-slide.active .neural-feature-card:nth-child(4) {
+    animation: slide-in-from-right-neural 0.9s ease-out 1.4s both;
+}
+
+@keyframes slide-in-from-top-neural {
+    from {
+        opacity: 0;
+        transform: translateY(-60px) scale(0.8) rotateX(-30deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotateX(0deg);
+    }
+}
+
+@keyframes slide-in-from-left-neural {
+    from {
+        opacity: 0;
+        transform: translateX(-60px) rotate(-8deg) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg) scale(1);
+    }
+}
+
+@keyframes slide-in-from-right-neural {
+    from {
+        opacity: 0;
+        transform: translateX(60px) rotate(8deg) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg) scale(1);
+    }
+}
+
+@keyframes slide-in-from-bottom {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .neural-modern-title {
+        font-size: 2.4rem !important;
+    }
+    
+    .neural-modern-content {
+        grid-template-columns: 1fr;
+        max-width: 700px;
+        gap: 20px;
+    }
+    
+    .neural-feature-card {
+        min-height: 160px;
+        padding: 22px 18px;
+    }
+    
+    .neural-card-icon {
+        font-size: 2.2rem;
+        margin-bottom: -10px;
+    }
+    
+    .neural-card-title {
+        font-size: 1.2rem;
+    }
+    
+    .neural-card-description {
+        font-size: 0.92rem;
+    }
+    
+    .neural-card-stats {
+        padding: 8px 12px;
+        gap: 8px;
+    }
+    
+    .neural-stat-value {
+        font-size: 1.2rem;
+    }
+    
+    .neural-stat-label {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .neural-modern-slide {
+        padding: 30px 20px !important;
+    }
+    
+    .neural-modern-title {
+        font-size: 2.0rem !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .neural-modern-subtitle {
+        font-size: 1.0rem;
+    }
+    
+    .neural-modern-header {
+        margin-bottom: 30px;
+    }
+    
+    .neural-feature-card {
+        padding: 20px 16px;
+        min-height: 150px;
+        border-radius: 18px;
+    }
+    
+    .neural-card-icon {
+        font-size: 2.0rem;
+        margin-bottom: -8px;
+    }
+    
+    .neural-card-title {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    
+    .neural-card-description {
+        font-size: 0.88rem;
+        line-height: 1.4;
+    }
+    
+    .neural-card-stats {
+        padding: 7px 10px;
+        gap: 6px;
+        border-radius: 12px;
+        margin-top: 12px;
+    }
+    
+    .neural-stat-value {
+        font-size: 1.1rem;
+    }
+    
+    .neural-stat-label {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .neural-modern-title {
+        font-size: 1.7rem !important;
+    }
+    
+    .neural-modern-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .neural-feature-card {
+        padding: 18px 14px;
+        min-height: 140px;
+        border-radius: 16px;
+    }
+    
+    .neural-card-icon {
+        font-size: 1.8rem;
+        margin-bottom: -6px;
+    }
+    
+    .neural-card-title {
+        font-size: 1.0rem;
+        margin-bottom: 8px;
+    }
+    
+    .neural-card-description {
+        font-size: 0.82rem;
+        line-height: 1.3;
+    }
+    
+    .neural-card-stats {
+        padding: 6px 8px;
+        gap: 5px;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+    
+    .neural-stat-value {
+        font-size: 1.0rem;
+    }
+    
+    .neural-stat-label {
+        font-size: 0.7rem;
+    }
+    
+    .neural-feature-card:hover {
+        transform: translateY(-5px) scale(1.02);
+    }
+}

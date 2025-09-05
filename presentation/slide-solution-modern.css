@@ -1,0 +1,495 @@
+/* Молодежный современный стиль для слайда 3 - Решение */
+.solution-modern-slide {
+    padding: 30px 20px !important;
+    background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(30, 30, 60, 0.95) 50%,
+        rgba(0, 0, 0, 0.95) 100%);
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.solution-modern-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(240, 147, 251, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.solution-modern-slide::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.02), transparent);
+    transform: rotate(45deg);
+    animation: grid-move 20s linear infinite;
+    pointer-events: none;
+}
+
+.modern-header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.modern-title {
+    font-size: 2.5rem !important;
+    font-weight: 900 !important;
+    background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px !important;
+    letter-spacing: -0.5px;
+    text-shadow: 0 0 20px rgba(255, 107, 107, 0.3),
+                 0 0 40px rgba(254, 202, 87, 0.2),
+                 0 0 60px rgba(72, 219, 251, 0.1);
+    animation: title-glow 3s ease-in-out infinite alternate;
+}
+
+.modern-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.modern-full-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.big-feature-card {
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0.04) 100%);
+    padding: 25px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.big-feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.12),
+        transparent);
+    transition: left 0.8s ease;
+}
+
+.big-feature-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(72, 219, 251, 0.4);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(72, 219, 251, 0.2),
+                0 0 25px rgba(72, 219, 251, 0.2);
+}
+
+.big-feature-card:hover::before {
+    left: 100%;
+}
+
+.big-card-icon {
+    font-size: 2.5rem;
+    margin-bottom: -12px;
+    display: inline-block;
+    animation: float 4s ease-in-out infinite;
+    text-shadow: 0 0 15px currentColor;
+}
+
+.big-card-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #48dbfb, #ff9ff3, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.3px;
+    text-align: center;
+}
+
+.big-card-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.big-card-stats {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    background: linear-gradient(135deg,
+        rgba(72, 219, 251, 0.15),
+        rgba(255, 107, 107, 0.15));
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-value {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #48dbfb;
+    text-shadow: 0 0 8px rgba(72, 219, 251, 0.4);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+/* Плавающие элементы для карточек */
+.big-feature-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(72, 219, 251, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: particle-float 8s ease-in-out infinite;
+    z-index: -1;
+}
+
+.big-feature-card:nth-child(even)::after {
+    top: 60%;
+    left: -30%;
+    animation-delay: 2s;
+    background: radial-gradient(circle, rgba(255, 107, 107, 0.2) 0%, transparent 70%);
+}
+
+.big-feature-card:nth-child(3)::after {
+    top: 20%;
+    right: -20%;
+    animation-delay: 4s;
+    background: radial-gradient(circle, rgba(255, 159, 243, 0.2) 0%, transparent 70%);
+}
+
+.big-feature-card:nth-child(4)::after {
+    bottom: -40%;
+    left: -20%;
+    animation-delay: 6s;
+    background: radial-gradient(circle, rgba(254, 202, 87, 0.2) 0%, transparent 70%);
+}
+
+@keyframes particle-float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(20px, -20px) scale(1.2);
+        opacity: 0.6;
+    }
+}
+
+/* Анимации */
+@keyframes title-glow {
+    0% {
+        text-shadow: 0 0 30px rgba(255, 107, 107, 0.3),
+                     0 0 60px rgba(254, 202, 87, 0.2),
+                     0 0 90px rgba(72, 219, 251, 0.1);
+    }
+    100% {
+        text-shadow: 0 0 40px rgba(255, 107, 107, 0.4),
+                     0 0 80px rgba(254, 202, 87, 0.3),
+                     0 0 120px rgba(72, 219, 251, 0.2);
+    }
+}
+
+@keyframes border-glow {
+    0% {
+        opacity: 0.5;
+        filter: blur(5px);
+    }
+    100% {
+        opacity: 0.8;
+        filter: blur(10px);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes image-float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+        transform: translateY(-5px) rotate(1deg);
+    }
+    66% {
+        transform: translateY(5px) rotate(-1deg);
+    }
+}
+
+@keyframes float-random {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px) rotate(90deg);
+    }
+    50% {
+        transform: translateY(0px) translateX(20px) rotate(180deg);
+    }
+    75% {
+        transform: translateY(20px) translateX(10px) rotate(270deg);
+    }
+}
+
+@keyframes grid-move {
+    0% {
+        transform: rotate(45deg) translateX(0%) translateY(0%);
+    }
+    100% {
+        transform: rotate(45deg) translateX(50%) translateY(50%);
+    }
+}
+
+/* Анимации появления для слайда */
+.solution-modern-slide.active .modern-title {
+    animation: slide-in-from-top 0.8s ease-out 0.4s both,
+               title-glow 3s ease-in-out 1.2s infinite alternate;
+}
+
+.solution-modern-slide.active .modern-subtitle {
+    animation: slide-in-from-bottom 0.8s ease-out 0.6s both;
+}
+
+.solution-modern-slide.active .big-feature-card:nth-child(1) {
+    animation: slide-in-from-left 0.8s ease-out 0.8s both;
+}
+
+.solution-modern-slide.active .big-feature-card:nth-child(2) {
+    animation: slide-in-from-right 0.8s ease-out 1.0s both;
+}
+
+.solution-modern-slide.active .big-feature-card:nth-child(3) {
+    animation: slide-in-from-left 0.8s ease-out 1.2s both;
+}
+
+.solution-modern-slide.active .big-feature-card:nth-child(4) {
+    animation: slide-in-from-right 0.8s ease-out 1.4s both;
+}
+
+@keyframes slide-in-from-right {
+    from {
+        opacity: 0;
+        transform: translateX(50px) rotate(5deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
+@keyframes slide-in-from-left {
+    from {
+        opacity: 0;
+        transform: translateX(-50px) rotate(-5deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
+@keyframes slide-in-from-top {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes slide-in-from-bottom {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .modern-full-cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        max-width: 600px;
+    }
+    
+    .modern-title {
+        font-size: 2.2rem !important;
+    }
+    
+    .modern-subtitle {
+        font-size: 1rem;
+    }
+    
+    .big-feature-card {
+        min-height: 180px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .solution-modern-slide {
+        padding: 20px 15px !important;
+    }
+    
+    .modern-title {
+        font-size: 1.8rem !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .modern-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .modern-header {
+        margin-bottom: 20px;
+    }
+    
+    .big-feature-card {
+        padding: 18px 16px;
+        min-height: 160px;
+        border-radius: 16px;
+    }
+    
+    .big-card-icon {
+        font-size: 2rem;
+        margin-bottom: 8px;
+    }
+    
+    .big-card-title {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+    
+    .big-card-description {
+        font-size: 0.85rem;
+        margin-bottom: 12px;
+        line-height: 1.4;
+    }
+    
+    .big-card-stats {
+        padding: 8px 12px;
+        gap: 8px;
+    }
+    
+    .stat-value {
+        font-size: 1.2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .modern-title {
+        font-size: 1.5rem !important;
+    }
+    
+    .modern-subtitle {
+        font-size: 0.8rem;
+    }
+    
+    .big-feature-card {
+        padding: 15px 12px;
+        min-height: 140px;
+        border-radius: 14px;
+    }
+    
+    .big-card-icon {
+        font-size: 1.8rem;
+        margin-bottom: 6px;
+    }
+    
+    .big-card-title {
+        font-size: 1rem;
+        margin-bottom: 6px;
+    }
+    
+    .big-card-description {
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+        line-height: 1.3;
+    }
+    
+    .big-card-stats {
+        padding: 6px 10px;
+        gap: 6px;
+        border-radius: 12px;
+    }
+    
+    .stat-value {
+        font-size: 1rem;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
+    }
+}

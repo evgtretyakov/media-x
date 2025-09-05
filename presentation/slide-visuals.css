@@ -1,0 +1,647 @@
+/* Стили для центральных визуалов (не фоновых изображений) */
+.central-visual {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.central-visual:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    border-color: rgba(102, 126, 234, 0.4);
+}
+
+/* Стили для карточек процессов */
+.process-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.process-step {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 4px solid #667eea;
+}
+
+.process-step h4 {
+    color: #667eea;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.process-step p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Стили для карточек метрик */
+.metric-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
+    padding: 20px;
+    border-radius: 15px;
+    margin: 15px 0;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.metric-card h4 {
+    color: #667eea;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.metric-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Стили для технологического стека */
+.tech-stack {
+    display: grid;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.tech-category {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    padding: 15px 20px;
+    border-radius: 12px;
+    border-left: 3px solid #667eea;
+}
+
+.tech-category h4 {
+    color: #667eea;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.tech-category p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Стили для дорожной карты */
+.roadmap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.roadmap-phase {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 4px solid #667eea;
+    position: relative;
+}
+
+.roadmap-phase::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -8px;
+    width: 16px;
+    height: 16px;
+    background: #667eea;
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.roadmap-phase h4 {
+    color: #667eea;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.roadmap-phase p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Контактная информация */
+.contact-info {
+    margin-top: 30px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    border-radius: 15px;
+    text-align: center;
+}
+
+.contact-info p {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Адаптивность для центральных визуалов */
+@media (max-width: 1024px) {
+    .central-visual {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    .process-step,
+    .metric-card,
+    .tech-category,
+    .roadmap-phase {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .central-visual {
+        max-width: 100%;
+        border-radius: 15px;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .image-content {
+        order: -1;
+    }
+
+    .process-flow,
+    .tech-stack,
+    .roadmap {
+        gap: 15px;
+    }
+
+    .process-step,
+    .metric-card,
+    .tech-category,
+    .roadmap-phase {
+        padding: 12px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .central-visual {
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.process-step h4,
+.metric-card h4,
+.tech-category h4,
+.roadmap-phase h4 {
+    font-size: 1rem;
+}
+
+/* Стили для горизонтального расположения этапов процесса */
+.horizontal-process {
+    display: flex;
+    gap: 30px;
+}
+
+.process-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 400px;
+}
+
+.process-step-horizontal {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    padding: 25px 20px;
+    border-radius: 20px;
+    text-align: center;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.process-step-horizontal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.process-step-horizontal:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+}
+
+.process-step-horizontal:hover::before {
+    left: 100%;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0 auto 15px;
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.process-step-horizontal h4 {
+    color: #667eea;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.process-step-horizontal p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Адаптивность для горизонтального процесса */
+@media (max-width: 1024px) {
+    .process-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .process-step-horizontal {
+        padding: 20px 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .horizontal-process {
+        gap: 20px;
+    }
+
+}
+
+.process-row {
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.process-step-horizontal {
+    padding: 18px 15px;
+}
+
+/* Стили для слайда GEO */
+.geo-features {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.geo-feature {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+    padding: 25px 20px;
+    border-radius: 20px;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.geo-feature::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.geo-feature:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(102, 126, 234, 0.2);
+}
+
+.geo-feature:hover::before {
+    left: 100%;
+}
+
+.geo-feature h4 {
+    color: #2d3748;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.geo-feature p {
+    color: #718096;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.geo-benefits {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    padding: 25px;
+    border-radius: 20px;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    text-align: center;
+    margin-top: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.geo-benefits p {
+    color: #2d3748;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Адаптивность для GEO слайда */
+@media (max-width: 1024px) {
+    .geo-features {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .geo-feature {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .geo-feature {
+        padding: 15px;
+    }
+
+    .geo-feature h4 {
+        font-size: 1rem;
+    }
+
+    .geo-feature p {
+        font-size: 0.9rem;
+    }
+
+    .geo-benefits {
+        padding: 15px;
+    }
+
+    .geo-benefits p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .geo-feature {
+        padding: 12px;
+    }
+
+    .geo-feature h4 {
+        font-size: 0.95rem;
+    }
+
+    .geo-feature p {
+        font-size: 0.85rem;
+    }
+
+    .geo-benefits {
+        padding: 12px;
+    }
+
+    .geo-benefits p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Темная тема для GEO слайда */
+@media (prefers-color-scheme: dark) {
+    .geo-feature {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+    }
+
+    .geo-feature h4 {
+        color: #ffffff;
+    }
+
+    .geo-feature p {
+        color: #cccccc;
+    }
+
+    .geo-benefits {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.25), rgba(118, 75, 162, 0.25));
+        border-color: rgba(102, 126, 234, 0.3);
+    }
+
+    .geo-benefits p {
+        color: #ffffff;
+    }
+}
+
+.step-number {
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem;
+}
+
+.process-step-horizontal h4 {
+    font-size: 1rem;
+}
+
+.process-step-horizontal p {
+    font-size: 0.85rem;
+}
+
+@media (max-width: 480px) {
+    .process-step-horizontal {
+        padding: 15px 12px;
+    }
+
+    .step-number {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    .process-step-horizontal h4 {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+    }
+
+    .process-step-horizontal p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Темная тема для горизонтального процесса */
+@media (prefers-color-scheme: dark) {
+    .process-step-horizontal {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+        border-color: rgba(102, 126, 234, 0.3);
+    }
+
+    .process-step-horizontal h4 {
+        color: #ffffff;
+    }
+
+    .process-step-horizontal p {
+        color: #cccccc;
+    }
+}
+
+.process-step p,
+.metric-card p,
+.tech-category p,
+.roadmap-phase p {
+    font-size: 0.9rem;
+}
+
+/* Стили для горизонтального расположения карточек метрик */
+.metrics-horizontal {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.metrics-horizontal .metric-card {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.metrics-horizontal .metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.metrics-horizontal .metric-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+}
+
+.metrics-horizontal .metric-card:hover::before {
+    left: 100%;
+}
+
+/* Адаптивность для горизонтальных метрик */
+@media (max-width: 1024px) {
+    .metrics-horizontal {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .metrics-horizontal {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .metrics-horizontal .metric-card {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .metrics-horizontal .metric-card {
+        padding: 12px;
+    }
+    
+    .metrics-horizontal .metric-card h4 {
+        font-size: 1rem;
+    }
+    
+    .metrics-horizontal .metric-card p {
+        font-size: 0.85rem;
+    }
+}
+
+/* Темная тема для горизонтальных метрик */
+@media (prefers-color-scheme: dark) {
+    .metrics-horizontal .metric-card {
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
+        border-color: rgba(102, 126, 234, 0.3);
+    }
+    
+    .metrics-horizontal .metric-card h4 {
+        color: #ffffff;
+    }
+    
+    .metrics-horizontal .metric-card p {
+        color: #cccccc;
+    }
+}
+
+/* Темная тема для новых элементов */
+@media (prefers-color-scheme: dark) {
+    .metric-card {
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
+        border-color: rgba(102, 126, 234, 0.3);
+    }
+
+    .metric-card h4 {
+        color: #ffffff;
+    }
+
+    .metric-card p {
+        color: #cccccc;
+    }
+
+    .process-step,
+    .tech-category,
+    .roadmap-phase,
+    .contact-info {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+    }
+
+    .process-step h4,
+    .tech-category h4,
+    .roadmap-phase h4 {
+        color: #ffffff;
+    }
+
+    .process-step p,
+    .tech-category p,
+    .roadmap-phase p {
+        color: #cccccc;
+    }
+
+    .contact-info p {
+        color: #ffffff;
+    }
+
+    .central-visual {
+        border-color: rgba(102, 126, 234, 0.4);
+        background: rgba(0, 0, 0, 0.3);
+    }
+}

@@ -1,0 +1,613 @@
+/* Молодежный современный стиль для слайда технологического стека */
+.tech-modern-slide {
+    padding: 40px 30px !important;
+    background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(30, 30, 60, 0.95) 50%,
+        rgba(0, 0, 0, 0.95) 100%);
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tech-modern-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(72, 219, 251, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(255, 107, 107, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 60% 30%, rgba(118, 75, 162, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 30% 70%, rgba(254, 202, 87, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.tech-modern-slide::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.02), transparent);
+    transform: rotate(45deg);
+    animation: tech-grid-move 20s linear infinite;
+    pointer-events: none;
+}
+
+.tech-modern-header {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.tech-modern-title {
+    font-size: 3.2rem !important;
+    font-weight: 900 !important;
+    background: linear-gradient(135deg, #48dbfb, #ff9ff3, #ff6b6b, #feca57, #1dd1a1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px !important;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    text-shadow: 0 0 40px rgba(72, 219, 251, 0.5),
+                 0 0 70px rgba(255, 159, 243, 0.4),
+                 0 0 100px rgba(255, 107, 107, 0.3);
+    animation: tech-title-glow-pulse 4s ease-in-out infinite alternate;
+}
+
+.tech-modern-subtitle {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 300;
+    letter-spacing: 0.8px;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.tech-modern-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.tech-category-modern {
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0.08) 100%);
+    padding: 30px 25px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(30px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tech-category-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent);
+    transition: left 0.8s ease;
+}
+
+.tech-category-modern:hover {
+    transform: translateY(-12px) scale(1.04) rotateX(5deg);
+    border-color: rgba(72, 219, 251, 0.6);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5),
+                0 0 0 3px rgba(72, 219, 251, 0.4),
+                0 0 45px rgba(72, 219, 251, 0.4);
+}
+
+.tech-category-modern:hover::before {
+    left: 100%;
+}
+
+.tech-category-icon {
+    font-size: 2.8rem;
+    margin-bottom: -10px;
+    text-align: center;
+    animation: tech-icon-float 6s ease-in-out infinite;
+    text-shadow: 0 0 25px currentColor;
+    filter: drop-shadow(0 0 15px currentColor);
+}
+
+.tech-category-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-align: center;
+    background: linear-gradient(135deg, #48dbfb, #ff9ff3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.2px;
+}
+
+.tech-category-description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0;
+    text-align: center;
+    font-weight: 400;
+}
+
+/* Плавающие частицы для категорий */
+.tech-category-modern::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -20%;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(72, 219, 251, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: tech-particle-float 12s ease-in-out infinite;
+    z-index: -1;
+}
+
+.tech-category-modern:nth-child(2n)::after {
+    top: 80%;
+    left: -15%;
+    animation-delay: 2s;
+    background: radial-gradient(circle, rgba(255, 107, 107, 0.3) 0%, transparent 70%);
+}
+
+.tech-category-modern:nth-child(3n)::after {
+    top: 30%;
+    right: -25%;
+    animation-delay: 4s;
+    background: radial-gradient(circle, rgba(254, 202, 87, 0.3) 0%, transparent 70%);
+}
+
+.tech-category-modern:nth-child(4n)::after {
+    top: 70%;
+    right: 10%;
+    animation-delay: 6s;
+    background: radial-gradient(circle, rgba(29, 209, 161, 0.3) 0%, transparent 70%);
+}
+
+/* Анимации */
+@keyframes tech-title-glow-pulse {
+    0% {
+        text-shadow: 0 0 40px rgba(72, 219, 251, 0.5),
+                     0 0 70px rgba(255, 159, 243, 0.4),
+                     0 0 100px rgba(255, 107, 107, 0.3);
+    }
+    100% {
+        text-shadow: 0 0 60px rgba(72, 219, 251, 0.6),
+                     0 0 90px rgba(255, 159, 243, 0.5),
+                     0 0 130px rgba(255, 107, 107, 0.4);
+    }
+}
+
+@keyframes tech-icon-float {
+    0%, 100% {
+        transform: translateY(0px) rotateX(0deg) rotateY(0deg) scale(1);
+        filter: drop-shadow(0 0 15px currentColor);
+    }
+    25% {
+        transform: translateY(-15px) rotateX(15deg) rotateY(30deg) scale(1.1);
+        filter: drop-shadow(0 0 20px currentColor);
+    }
+    50% {
+        transform: translateY(0px) rotateX(0deg) rotateY(60deg) scale(1.05);
+        filter: drop-shadow(0 0 25px currentColor);
+    }
+    75% {
+        transform: translateY(15px) rotateX(-15deg) rotateY(30deg) scale(0.95);
+        filter: drop-shadow(0 0 20px currentColor);
+    }
+}
+
+@keyframes tech-particle-float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 0.5;
+    }
+    25% {
+        transform: translate(20px, -20px) scale(1.4) rotate(90deg);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translate(40px, 0px) scale(1.2) rotate(180deg);
+        opacity: 0.6;
+    }
+    75% {
+        transform: translate(20px, 20px) scale(1.5) rotate(270deg);
+        opacity: 0.8;
+    }
+}
+
+@keyframes tech-grid-move {
+    0% {
+        transform: rotate(45deg) translateX(0%) translateY(0%);
+    }
+    100% {
+        transform: rotate(45deg) translateX(50%) translateY(50%);
+    }
+}
+
+/* Анимации появления для слайда */
+.tech-modern-slide.active .tech-modern-title {
+    animation: tech-title-appear 1s ease-out 0.4s both,
+               tech-title-glow-pulse 4s ease-in-out 1.4s infinite alternate;
+}
+
+.tech-modern-slide.active .tech-modern-subtitle {
+    animation: tech-subtitle-appear 1s ease-out 0.6s both;
+}
+
+.tech-modern-slide.active .tech-category-modern:nth-child(1) {
+    animation: tech-card-appear 1s ease-out 0.8s both;
+}
+
+.tech-modern-slide.active .tech-category-modern:nth-child(2) {
+    animation: tech-card-appear 1s ease-out 1.0s both;
+}
+
+.tech-modern-slide.active .tech-category-modern:nth-child(3) {
+    animation: tech-card-appear 1s ease-out 1.2s both;
+}
+
+.tech-modern-slide.active .tech-category-modern:nth-child(4) {
+    animation: tech-card-appear 1s ease-out 1.4s both;
+}
+
+.tech-modern-slide.active .tech-category-modern:nth-child(5) {
+    animation: tech-card-appear 1s ease-out 1.6s both;
+}
+
+@keyframes tech-title-appear {
+    from {
+        opacity: 0;
+        transform: translateY(-70px) scale(0.7) rotateX(-40deg);
+        filter: blur(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotateX(0deg);
+        filter: blur(0);
+    }
+}
+
+@keyframes tech-subtitle-appear {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+        filter: blur(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes tech-card-appear {
+    from {
+        opacity: 0;
+        transform: translateY(60px) rotateX(-20deg) scale(0.8);
+        filter: blur(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .tech-modern-title {
+        font-size: 2.6rem !important;
+    }
+    
+    .tech-modern-content {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+    }
+    
+    .tech-category-modern {
+        padding: 25px 20px;
+        min-height: 160px;
+    }
+    
+    .tech-category-icon {
+        font-size: 2.4rem;
+        margin-bottom: -8px;
+    }
+    
+    .tech-category-title {
+        font-size: 1.2rem;
+    }
+    
+    .tech-category-description {
+        font-size: 0.98rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tech-modern-slide {
+        padding: 30px 20px !important;
+    }
+    
+    .tech-modern-title {
+        font-size: 2.2rem !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .tech-modern-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .tech-modern-header {
+        margin-bottom: 40px;
+    }
+    
+    .tech-modern-content {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        gap: 18px;
+    }
+    
+    .tech-category-modern {
+        padding: 22px 18px;
+        min-height: 140px;
+        border-radius: 20px;
+    }
+    
+    .tech-category-icon {
+        font-size: 2.2rem;
+        margin-bottom: -6px;
+    }
+    
+    .tech-category-title {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+    
+    .tech-category-description {
+        font-size: 0.92rem;
+        line-height: 1.5;
+    }
+    
+    .tech-category-modern:hover {
+        transform: translateY(-8px) scale(1.02) rotateX(3deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-modern-title {
+        font-size: 1.9rem !important;
+    }
+    
+    .tech-modern-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .tech-category-modern {
+        padding: 20px 16px;
+        min-height: 130px;
+        border-radius: 18px;
+    }
+    
+    .tech-category-icon {
+        font-size: 2.0rem;
+        margin-bottom: -4px;
+    }
+    
+    .tech-category-title {
+        font-size: 1.0rem;
+        margin-bottom: 10px;
+    }
+    
+    .tech-category-description {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    .tech-category-modern:hover {
+        transform: translateY(-6px) scale(1.01) rotateX(2deg);
+    }
+}
+
+/* Темная тема (уже темная по умолчанию, но для консистентности) */
+@media (prefers-color-scheme: dark) {
+    .tech-modern-slide {
+        background: linear-gradient(135deg,
+            rgba(0, 0, 0, 0.97) 0%,
+            rgba(20, 20, 40, 0.97) 50%,
+            rgba(0, 0, 0, 0.97) 100%);
+    }
+    
+    .tech-category-modern {
+        background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(255, 255, 255, 0.1) 100%);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .tech-category-title {
+        color: #ffffff;
+    }
+    
+    .tech-category-description {
+        color: rgba(255, 255, 255, 0.95);
+    }
+}
+
+/* Поддержка старых браузеров */
+@supports not (backdrop-filter: blur(30px)) {
+    .tech-category-modern {
+        background: linear-gradient(135deg,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(30, 30, 60, 0.8) 100%);
+    }
+}
+
+/* Поддержка для Safari */
+@supports (-webkit-backdrop-filter: blur(30px)) {
+    .tech-category-modern {
+        -webkit-backdrop-filter: blur(30px);
+        backdrop-filter: blur(30px);
+    }
+}
+
+/* Отключение анимаций для пользователей, предпочитающих reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .tech-modern-slide::after,
+    .tech-category-modern::after,
+    .tech-category-icon,
+    .tech-modern-title,
+    .tech-category-modern,
+    .tech-category-modern::before {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .tech-category-modern:hover {
+        transform: none !important;
+    }
+}
+
+/* Улучшенная поддержка мобильных устройств */
+@media (max-width: 768px) and (orientation: landscape) {
+    .tech-modern-slide {
+        padding: 20px 15px !important;
+        min-height: auto;
+    }
+    
+    .tech-modern-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .tech-category-modern {
+        padding: 18px 15px;
+        min-height: 120px;
+    }
+    
+    .tech-category-icon {
+        font-size: 1.8rem;
+        margin-bottom: -3px;
+    }
+    
+    .tech-category-title {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+    }
+    
+    .tech-category-description {
+        font-size: 0.8rem;
+        line-height: 1.3;
+    }
+}
+
+/* Высокопиксельные дисплеи */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .tech-category-modern {
+        border-width: 1.5px;
+    }
+}
+
+/* Поддержка очень маленьких экранов */
+@media (max-width: 320px) {
+    .tech-modern-title {
+        font-size: 1.6rem !important;
+    }
+    
+    .tech-modern-subtitle {
+        font-size: 1.0rem;
+    }
+    
+    .tech-modern-content {
+        gap: 12px;
+    }
+    
+    .tech-category-modern {
+        padding: 16px 12px;
+        min-height: 110px;
+        border-radius: 16px;
+    }
+    
+    .tech-category-icon {
+        font-size: 1.6rem;
+    }
+    
+    .tech-category-title {
+        font-size: 0.9rem;
+    }
+    
+    .tech-category-description {
+        font-size: 0.75rem;
+    }
+}
+
+/* Поддержка очень больших экранов */
+@media (min-width: 1920px) {
+    .tech-modern-slide {
+        padding: 60px 40px !important;
+    }
+    
+    .tech-modern-title {
+        font-size: 4rem !important;
+    }
+    
+    .tech-modern-subtitle {
+        font-size: 1.6rem;
+    }
+    
+    .tech-modern-content {
+        max-width: 1600px;
+        gap: 35px;
+    }
+    
+    .tech-category-modern {
+        padding: 40px 35px;
+        min-height: 220px;
+        border-radius: 30px;
+    }
+    
+    .tech-category-icon {
+        font-size: 3.5rem;
+        margin-bottom: -15px;
+    }
+    
+    .tech-category-title {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+    
+    .tech-category-description {
+        font-size: 1.2rem;
+        line-height: 1.7;
+    }
+}
