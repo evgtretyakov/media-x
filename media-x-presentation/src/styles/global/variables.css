@@ -1,0 +1,39 @@
+/* CSS Variables for the presentation */
+:root {
+  /* Primary Colors */
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --accent-color: #ff6b6b;
+  
+  /* Text Colors */
+  --text-primary: #2d3748;
+  --text-secondary: #718096;
+  
+  /* Background Colors */
+  --bg-white: rgba(255, 255, 255, 0.98);
+  --bg-dark: rgba(0, 0, 0, 0.9);
+  
+  /* Shadows */
+  --shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 25px 50px rgba(0, 0, 0, 0.4);
+  --shadow-nav: 0 8px 25px rgba(102, 126, 234, 0.4);
+  
+  /* Sizes */
+  --nav-btn-size: 65px;
+  --nav-btn-size-md: 55px;
+  --nav-btn-size-sm: 45px;
+  
+  /* Transitions */
+  --transition-base: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.8s ease;
+  --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Dark theme variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --bg-white: rgba(0, 0, 0, 0.9);
+  }
+}

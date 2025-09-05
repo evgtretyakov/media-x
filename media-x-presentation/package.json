@@ -1,0 +1,47 @@
+{
+  "name": "media-x-presentation",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Modern React presentation for Media X with advanced animations",
+  "author": "Media X Team",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:prod": "vite build --mode production",
+    "preview": "vite preview",
+    "preview:prod": "vite preview --mode production",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext ts,tsx --fix",
+    "type-check": "tsc --noEmit",
+    "analyze": "vite-bundle-analyzer"
+  },
+  "dependencies": {
+    "@react-spring/web": "^10.0.1",
+    "framer-motion": "^12.23.12",
+    "gsap": "^3.13.0",
+    "puppeteer": "^24.19.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "styled-components": "^6.1.19",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@types/node": "^22.13.5",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.0.0",
+    "eslint": "^9.33.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "rollup-plugin-visualizer": "^6.0.3",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.39.1",
+    "vite": "^6.0.7",
+    "vite-plugin-checker": "^0.10.3",
+    "vite-plugin-compression": "^0.5.1"
+  }
+}

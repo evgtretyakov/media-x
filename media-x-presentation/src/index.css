@@ -1,0 +1,40 @@
+/* Import global styles */
+@import './styles/global/index.css';
+
+/* Reset default Vite styles and use our presentation styles */
+#root {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* Ensure proper body styling for presentation */
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Remove default Vite button styles */
+button {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Remove Vite logo styles */
+.logo {
+  display: none;
+}
+
+/* Remove Vite card styles */
+.card {
+  display: none;
+}
+
+.read-the-docs {
+  display: none;
+}

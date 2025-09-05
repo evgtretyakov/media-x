@@ -1,0 +1,376 @@
+/* Challenge Slide specific styles */
+.challengeSlide {
+  padding: 40px !important;
+}
+
+/* Header styles */
+.slideHeader {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.glitchText {
+  position: relative;
+  font-size: 2.5rem !important;
+  font-weight: 800 !important;
+  color: #667eea;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px !important;
+}
+
+.glitchText::before,
+.glitchText::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitchText::before {
+  animation: glitch-animation 2s infinite;
+  color: #ff6b6b;
+  z-index: -1;
+}
+
+.glitchText::after {
+  animation: glitch-animation 1.5s infinite reverse;
+  color: #4ecdc4;
+  z-index: -2;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+/* Content layout */
+.challengeContent {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* AI Chat visual */
+.aiChatVisual {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.chatInterface {
+  width: 300px;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chatHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chatAvatar {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.chatTitle {
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.chatMessages {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.message {
+  padding: 12px 16px;
+  border-radius: 18px;
+  max-width: 80%;
+  animation: message-appear 0.6s ease-out;
+}
+
+.userMessage {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.aiMessage {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ecf0f1;
+  backdrop-filter: blur(10px);
+}
+
+.messageContent {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Challenge cards */
+.challengeCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.challengeCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  padding: 30px 25px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.challengeCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.challengeCard:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(102, 126, 234, 0.2);
+}
+
+.challengeCard:hover::before {
+  left: 100%;
+}
+
+.cardIcon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  animation: float-icon 3s ease-in-out infinite;
+}
+
+.challengeCard h3 {
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.challengeCard p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.cardStats {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  padding: 15px;
+  border-radius: 15px;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.statValue {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #667eea;
+  margin-bottom: 5px;
+}
+
+.statLabel {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Slide footer */
+.slideFooter {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.trendIndicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px 25px;
+  border-radius: 25px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.trendLabel {
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.trendGraph {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 40px;
+}
+
+.graphBar {
+  width: 8px;
+  background: linear-gradient(to top, #667eea, #764ba2);
+  border-radius: 4px 4px 0 0;
+  height: calc(var(--value) * 0.4);
+  animation: graph-pulse 2s ease-in-out infinite;
+  animation-delay: calc(var(--index, 0) * 0.2s);
+}
+
+.graphBar:nth-child(1) { --index: 1; }
+.graphBar:nth-child(2) { --index: 2; }
+.graphBar:nth-child(3) { --index: 3; }
+.graphBar:nth-child(4) { --index: 4; }
+
+/* Animation classes for slide elements */
+.activeSlide .chatInterface {
+  animation: slide-in-left 0.8s ease-out 0.5s both;
+}
+
+.activeSlide .challengeCard:nth-child(1) {
+  animation: slide-in-right 0.8s ease-out 0.7s both;
+}
+
+.activeSlide .challengeCard:nth-child(2) {
+  animation: slide-in-right 0.8s ease-out 0.9s both;
+}
+
+.activeSlide .challengeCard:nth-child(3) {
+  animation: slide-in-right 0.8s ease-out 1.1s both;
+}
+
+.activeSlide .trendIndicator {
+  animation: slide-in-up 0.8s ease-out 1.3s both;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .challengeContent {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .challengeCards {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .glitchText {
+    font-size: 2.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .challengeSlide {
+    padding: 30px 20px !important;
+  }
+  
+  .glitchText {
+    font-size: 2rem !important;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .chatInterface {
+    width: 250px;
+  }
+  
+  .challengeCard {
+    padding: 20px 15px;
+  }
+  
+  .cardIcon {
+    font-size: 2.5rem;
+  }
+  
+  .trendIndicator {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .glitchText {
+    font-size: 1.6rem !important;
+  }
+  
+  .challengeCards {
+    grid-template-columns: 1fr;
+  }
+  
+  .chatInterface {
+    width: 220px;
+    padding: 15px;
+  }
+  
+  .cardIcon {
+    font-size: 2rem;
+  }
+  
+  .statValue {
+    font-size: 1.5rem;
+  }
+}
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+  .challengeCard {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .challengeCard h3 {
+    color: #ffffff;
+  }
+  
+  .challengeCard p {
+    color: #cccccc;
+  }
+  
+  .trendIndicator {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  
+  .trendLabel {
+    color: #ffffff;
+  }
+}

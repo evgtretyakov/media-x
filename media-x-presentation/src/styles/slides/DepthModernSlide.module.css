@@ -1,0 +1,288 @@
+/* Modern Depth Slide styles */
+.depthModernSlide {
+  padding: 40px 30px !important;
+  background: linear-gradient(135deg,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(30, 30, 60, 0.95) 50%,
+    rgba(0, 0, 0, 0.95) 100%);
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.depthModernSlide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(72, 219, 251, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 107, 107, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.depthModernSlide::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.02), transparent);
+  transform: rotate(45deg);
+  animation: grid-move 20s linear infinite;
+  pointer-events: none;
+}
+
+/* Header styles */
+.depthModernHeader {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.depthModernTitle {
+  font-size: 2.8rem !important;
+  font-weight: 900 !important;
+  background: linear-gradient(135deg, #48dbfb, #ff9ff3, #ff6b6b, #feca57);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 20px !important;
+  letter-spacing: -0.5px;
+  text-shadow: 0 0 30px rgba(72, 219, 251, 0.4),
+               0 0 60px rgba(255, 159, 243, 0.3),
+               0 0 90px rgba(255, 107, 107, 0.2);
+  animation: title-glow-pulse 3s ease-in-out infinite alternate;
+}
+
+/* Content layout */
+.depthModernContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Feature cards */
+.depthFeatureCard {
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%);
+  padding: 30px 25px;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(25px);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-base);
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.depthFeatureCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent);
+  transition: left 0.8s ease;
+}
+
+.depthFeatureCard:hover {
+  transform: translateY(-8px) scale(1.03);
+  border-color: rgba(72, 219, 251, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+              0 0 0 2px rgba(72, 219, 251, 0.3),
+              0 0 35px rgba(72, 219, 251, 0.3);
+}
+
+.depthFeatureCard:hover::before {
+  left: 100%;
+}
+
+/* Card icon */
+.depthCardIcon {
+  font-size: 2.8rem;
+  margin-bottom: -15px;
+  display: inline-block;
+  animation: float-3d 5s ease-in-out infinite;
+  text-shadow: 0 0 20px currentColor;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.depthCardTitle {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #48dbfb, #ff9ff3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.2px;
+  text-align: center;
+}
+
+.depthCardDescription {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0;
+  text-align: center;
+  font-weight: 400;
+}
+
+/* Floating particles for cards */
+.depthFeatureCard::after {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -30%;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(72, 219, 251, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: particle-float-deep 10s ease-in-out infinite;
+  z-index: -1;
+}
+
+.depthFeatureCard:nth-child(even)::after {
+  top: 70%;
+  left: -25%;
+  animation-delay: 3s;
+  background: radial-gradient(circle, rgba(255, 107, 107, 0.25) 0%, transparent 70%);
+}
+
+/* Animation classes for slide elements */
+.activeSlide .depthModernTitle {
+  animation: slide-in-from-top-deep 0.9s ease-out 0.4s both,
+             title-glow-pulse 3s ease-in-out 1.3s infinite alternate;
+}
+
+.activeSlide .depthFeatureCard:nth-child(1) {
+  animation: slide-in-from-left-deep 0.9s ease-out 0.8s both;
+}
+
+.activeSlide .depthFeatureCard:nth-child(2) {
+  animation: slide-in-from-right-deep 0.9s ease-out 1.0s both;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .depthModernTitle {
+    font-size: 2.4rem !important;
+  }
+  
+  .depthModernContent {
+    max-width: 700px;
+    gap: 25px;
+  }
+  
+  .depthFeatureCard {
+    padding: 25px 20px;
+    min-height: 160px;
+  }
+  
+  .depthCardIcon {
+    font-size: 2.4rem;
+    margin-bottom: -12px;
+  }
+  
+  .depthCardTitle {
+    font-size: 1.2rem;
+  }
+  
+  .depthCardDescription {
+    font-size: 0.98rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .depthModernSlide {
+    padding: 30px 20px !important;
+  }
+  
+  .depthModernTitle {
+    font-size: 2.0rem !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .depthModernHeader {
+    margin-bottom: 30px;
+  }
+  
+  .depthModernContent {
+    gap: 20px;
+    max-width: 500px;
+  }
+  
+  .depthFeatureCard {
+    padding: 22px 18px;
+    min-height: 140px;
+    border-radius: 20px;
+  }
+  
+  .depthCardIcon {
+    font-size: 2.2rem;
+    margin-bottom: -10px;
+  }
+  
+  .depthCardTitle {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+  
+  .depthCardDescription {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .depthModernTitle {
+    font-size: 1.7rem !important;
+  }
+  
+  .depthFeatureCard {
+    padding: 20px 16px;
+    min-height: 130px;
+    border-radius: 18px;
+  }
+  
+  .depthCardIcon {
+    font-size: 2.0rem;
+    margin-bottom: -8px;
+  }
+  
+  .depthCardTitle {
+    font-size: 1.0rem;
+    margin-bottom: 10px;
+  }
+  
+  .depthCardDescription {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  
+  .depthFeatureCard:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
+}

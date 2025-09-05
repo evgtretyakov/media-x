@@ -1,0 +1,302 @@
+/* Global animations for the presentation */
+
+/* Slide content animations */
+@keyframes slideInContent {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) rotateX(-45deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px) rotateX(45deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Glitch animation effects */
+@keyframes glitch-animation {
+  0% { transform: translate(0); }
+  20% { transform: translate(-5px, 5px); }
+  40% { transform: translate(-5px, -5px); }
+  60% { transform: translate(5px, 5px); }
+  80% { transform: translate(5px, -5px); }
+  100% { transform: translate(0); }
+}
+
+/* Message appear animation */
+@keyframes message-appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Graph pulse animation */
+@keyframes graph-pulse {
+  0%, 100% { height: calc(var(--value) * 0.4); }
+  50% { height: calc(var(--value) * 0.45); }
+}
+
+/* Float icon animation */
+@keyframes float-icon {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+/* Pulse glow animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+/* Dot pulse animation */
+@keyframes dot-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+}
+
+/* Pulse ring animation */
+@keyframes pulse-ring {
+  0% {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+  }
+  100% {
+    width: 60px;
+    height: 60px;
+    opacity: 0;
+  }
+}
+
+/* Progress fill animation */
+@keyframes fill-progress {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+/* Progress shine animation */
+@keyframes progress-shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Radar spin animation */
+@keyframes radar-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+
+/* Title glow pulse */
+@keyframes title-glow-pulse {
+  0% {
+    text-shadow: 0 0 30px rgba(72, 219, 251, 0.4),
+                 0 0 60px rgba(255, 159, 243, 0.3),
+                 0 0 90px rgba(255, 107, 107, 0.2);
+  }
+  100% {
+    text-shadow: 0 0 45px rgba(72, 219, 251, 0.5),
+                 0 0 80px rgba(255, 159, 243, 0.4),
+                 0 0 120px rgba(255, 107, 107, 0.3);
+  }
+}
+
+/* 3D float animation */
+@keyframes float-3d {
+  0%, 100% {
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+    filter: drop-shadow(0 0 10px currentColor);
+  }
+  25% {
+    transform: translateY(-12px) rotateX(10deg) rotateY(20deg);
+    filter: drop-shadow(0 0 15px currentColor);
+  }
+  50% {
+    transform: translateY(0px) rotateX(0deg) rotateY(40deg);
+    filter: drop-shadow(0 0 20px currentColor);
+  }
+  75% {
+    transform: translateY(12px) rotateX(-10deg) rotateY(20deg);
+    filter: drop-shadow(0 0 15px currentColor);
+  }
+}
+
+/* Particle float animation */
+@keyframes particle-float-deep {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translate(15px, -15px) scale(1.3) rotate(90deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(30px, 0px) scale(1.1) rotate(180deg);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(15px, 15px) scale(1.4) rotate(270deg);
+    opacity: 0.7;
+  }
+}
+
+/* Grid move animation */
+@keyframes grid-move {
+  0% {
+    transform: rotate(45deg) translateX(0%) translateY(0%);
+  }
+  100% {
+    transform: rotate(45deg) translateX(50%) translateY(50%);
+  }
+}
+
+/* Slide in animations with depth */
+@keyframes slide-in-from-top-deep {
+  from {
+    opacity: 0;
+    transform: translateY(-60px) scale(0.8) rotateX(-30deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+  }
+}
+
+@keyframes slide-in-from-left-deep {
+  from {
+    opacity: 0;
+    transform: translateX(-60px) rotate(-8deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes slide-in-from-right-deep {
+  from {
+    opacity: 0;
+    transform: translateX(60px) rotate(8deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg) scale(1);
+  }
+}
+
+/* Metrics specific animations */
+@keyframes metric-icon-float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  33% { 
+    transform: translateY(-8px) rotate(3deg) scale(1.05);
+  }
+  66% { 
+    transform: translateY(4px) rotate(-2deg) scale(0.98);
+  }
+}
+
+@keyframes metric-glow-pulse {
+  0%, 100% { 
+    opacity: 0.6; 
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% { 
+    opacity: 0.9; 
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes metric-shimmer {
+  0% {
+    transform: rotate(45deg) translateX(-100%);
+  }
+  100% {
+    transform: rotate(45deg) translateX(100%);
+  }
+}
+
+/* Fade in animation */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Slide in up animation */
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

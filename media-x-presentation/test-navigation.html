@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование навигации Media X Presentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .test-section h2 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #5a67d8;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+        }
+        .success {
+            color: #38a169;
+        }
+        .error {
+            color: #e53e3e;
+        }
+        .info {
+            color: #3182ce;
+        }
+        .console {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            height: 200px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+        .log {
+            margin: 2px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Тестирование навигации Media X Presentation</h1>
+        
+        <div class="test-section">
+            <h2>1. Проверка глобального API</h2>
+            <button onclick="checkGlobalAPI()">Проверить API</button>
+            <div id="api-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>2. Навигация слайдами</h2>
+            <button onclick="testNext()">Следующий слайд (➡️)</button>
+            <button onclick="testPrev()">Предыдущий слайд (⬅️)</button>
+            <button onclick="testGoTo(1)">Перейти к слайду 2</button>
+            <button onclick="testGoTo(0)">Перейти к слайду 1</button>
+            <div id="nav-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>3. Состояние презентации</h2>
+            <button onclick="checkState()">Проверить состояние</button>
+            <div id="state-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>4. Клавиатурная навигация</h2>
+            <p>Попробуйте использовать:</p>
+            <ul>
+                <li>Стрелка вправо → следующий слайд</li>
+                <li>Стрелка влево → предыдущий слайд</li>
+                <li>Пробел → следующий слайд</li>
+                <li>Клавиши 1,2,3 → переход к слайду</li>
+            </ul>
+            <div id="keyboard-result" class="result"></div>
+        </div>
+
+        <div class="console" id="console">
+            <div class="log">🚀 Консоль тестирования...</div>
+        </div>
+    </div>
+
+    <script>
+        function log(message, type = 'info') {
+            const consoleEl = document.getElementById('console');
+            const logEntry = document.createElement('div');
+            logEntry.className = `log ${type}`;
+            logEntry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            consoleEl.appendChild(logEntry);
+            consoleEl.scrollTop = consoleEl.scrollHeight;
+        }
+
+        function checkGlobalAPI() {
+            const resultEl = document.getElementById('api-result');
+            try {
+                if (typeof window.presentation === 'undefined') {
+                    resultEl.innerHTML = '<span class="error">❌ Глобальное API не доступно</span>';
+                    log('Глобальное API не доступно', 'error');
+                    return;
+                }
+
+                const apiMethods = Object.keys(window.presentation);
+                resultEl.innerHTML = `
+                    <span class="success">✅ Глобальное API доступно</span><br>
+                    <strong>Методы:</strong> ${apiMethods.join(', ')}
+                `;
+                log('Глобальное API доступно: ' + apiMethods.join(', '), 'success');
+                
+            } catch (error) {
+                resultEl.innerHTML = `<span class="error">❌ Ошибка: ${error.message}</span>`;
+                log('Ошибка проверки API: ' + error.message, 'error');
+            }
+        }
+
+        function testNext() {
+            const resultEl = document.getElementById('nav-result');
+            try {
+                if (!window.presentation) {
+                    resultEl.innerHTML = '<span class="error">❌ API не инициализировано</span>';
+                    return;
+                }
+
+                const currentBefore = window.presentation.getCurrent();
+                window.presentation.next();
+                
+                setTimeout(() => {
+                    const currentAfter = window.presentation.getCurrent();
+                    resultEl.innerHTML = `
+                        <span class="success">✅ Переход выполнен</span><br>
+                        <strong>Было:</strong> слайд ${currentBefore + 1}<br>
+                        <strong>Стало:</strong> слайд ${currentAfter + 1}
+                    `;
+                    log(`Переход вперед: ${currentBefore + 1} → ${currentAfter + 1}`, 'success');
+                }, 300);
+                
+            } catch (error) {
+                resultEl.innerHTML = `<span class="error">❌ Ошибка: ${error.message}</span>`;
+                log('Ошибка перехода вперед: ' + error.message, 'error');
+            }
+        }
+
+        function testPrev() {
+            const resultEl = document.getElementById('nav-result');
+            try {
+                if (!window.presentation) {
+                    resultEl.innerHTML = '<span class="error">❌ API не инициализировано</span>';
+                    return;
+                }
+
+                const currentBefore = window.presentation.getCurrent();
+                window.presentation.prev();
+                
+                setTimeout(() => {
+                    const currentAfter = window.presentation.getCurrent();
+                    resultEl.innerHTML = `
+                        <span class="success">✅ Переход выполнен</span><br>
+                        <strong>Было:</strong> слайд ${currentBefore + 1}<br>
+                        <strong>Стало:</strong> слайд ${currentAfter + 1}
+                    `;
+                    log(`Переход назад: ${currentBefore + 1} → ${currentAfter + 1}`, 'success');
+                }, 300);
+                
+            } catch (error) {
+                resultEl.innerHTML = `<span class="error">❌ Ошибка: ${error.message}</span>`;
+                log('Ошибка перехода назад: ' + error.message, 'error');
+            }
+        }
+
+        function testGoTo(slideIndex) {
+            const resultEl = document.getElementById('nav-result');
+            try {
+                if (!window.presentation) {
+                    resultEl.innerHTML = '<span class="error">❌ API не инициализировано</span>';
+                    return;
+                }
+
+                const currentBefore = window.presentation.getCurrent();
+                window.presentation.goTo(slideIndex);
+                
+                setTimeout(() => {
+                    const currentAfter = window.presentation.getCurrent();
+                    resultEl.innerHTML = `
+                        <span class="success">✅ Переход выполнен</span><br>
+                        <strong>Было:</strong> слайд ${currentBefore + 1}<br>
+                        <strong>Стало:</strong> слайд ${currentAfter + 1}
+                    `;
+                    log(`Переход к слайду: ${currentBefore + 1} → ${slideIndex + 1}`, 'success');
+                }, 300);
+                
+            } catch (error) {
+                resultEl.innerHTML = `<span class="error">❌ Ошибка: ${error.message}</span>`;
+                log('Ошибка перехода к слайду: ' + error.message, 'error');
+            }
+        }
+
+        function checkState() {
+            const resultEl = document.getElementById('state-result');
+            try {
+                if (!window.presentation) {
+                    resultEl.innerHTML = '<span class="error">❌ API не инициализировано</span>';
+                    return;
+                }
+
+                const state = {
+                    current: window.presentation.getCurrent() + 1,
+                    total: window.presentation.getTotal(),
+                    animating: window.presentation.isAnimating()
+                };
+
+                resultEl.innerHTML = `
+                    <span class="success">✅ Состояние получено</span><br>
+                    <strong>Текущий слайд:</strong> ${state.current}<br>
+                    <strong>Всего слайдов:</strong> ${state.total}<br>
+                    <strong>Анимация:</strong> ${state.animating ? 'да' : 'нет'}
+                `;
+                log(`Состояние: слайд ${state.current}/${state.total}, анимация: ${state.animating}`, 'info');
+                
+            } catch (error) {
+                resultEl.innerHTML = `<span class="error">❌ Ошибка: ${error.message}</span>`;
+                log('Ошибка получения состояния: ' + error.message, 'error');
+            }
+        }
+
+        // Автопроверка при загрузке
+        setTimeout(() => {
+            log('Запуск автоматической проверки...', 'info');
+            checkGlobalAPI();
+            setTimeout(checkState, 500);
+        }, 1000);
+    </script>
+</body>
+</html>
