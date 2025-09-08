@@ -8,6 +8,17 @@ import { preloadImages, presentationImages } from './utils/animationUtils';
 import type { Slide as SlideType } from './types';
 import './styles/global/index.css';
 
+// Импорт компонентов слайдов
+import TechModernSlide from './components/slides/TechModernSlide';
+import VisionSlide from './components/slides/VisionSlide';
+import SolutionSlide from './components/slides/SolutionSlide';
+import LLMDataSlide from './components/slides/LLMDataSlide';
+import UIDashboardSlide from './components/slides/UIDashboardSlide';
+import WhyNowSlide from './components/slides/WhyNowSlide';
+import RoadmapSlide from './components/slides/RoadmapSlide';
+import TeamSlide from './components/slides/TeamSlide';
+import QnASlide from './components/slides/QnASlide';
+
 const slides: SlideType[] = [
   {
     id: '1',
@@ -94,6 +105,60 @@ const slides: SlideType[] = [
       </div>
     ),
     background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
+  },
+  {
+    id: '4',
+    title: 'Современный технологический стек',
+    content: null, // Будет заменен компонентом TechModernSlide
+    background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(30, 30, 60, 0.95) 50%, rgba(0, 0, 0, 0.95) 100%)'
+  },
+  {
+    id: '5',
+    title: 'Видение и архитектура решения',
+    content: null, // Будет заменен компонентом VisionSlide
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+  },
+  {
+    id: '6',
+    title: 'Пайплайн решения',
+    content: null, // Будет заменен компонентом SolutionSlide
+    background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+  },
+  {
+    id: '7',
+    title: 'Структурированные данные и LLM',
+    content: null, // Будет заменен компонентом LLMDataSlide
+    background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
+  },
+  {
+    id: '8',
+    title: 'UI Dashboard мокап',
+    content: null, // Будет заменен компонентом UIDashboardSlide
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+  },
+  {
+    id: '9',
+    title: 'Почему сейчас - идеальное время',
+    content: null, // Будет заменен компонентом WhyNowSlide
+    background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+  },
+  {
+    id: '10',
+    title: 'Дорожная карта развития',
+    content: null, // Будет заменен компонентом RoadmapSlide
+    background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
+  },
+  {
+    id: '11',
+    title: 'Команда и коллаборация',
+    content: null, // Будет заменен компонентом TeamSlide
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+  },
+  {
+    id: '12',
+    title: 'Вопросы и ответы / Контакты',
+    content: null, // Будет заменен компонентом QnASlide
+    background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
   }
 ];
 
@@ -106,7 +171,8 @@ function App() {
     prevSlide,
     togglePlayPause,
     setTotalSlides,
-    setAnimating
+    setAnimating,
+    setCurrentSlide
   } = usePresentationStore();
 
   const [isExpanded, setIsExpanded] = React.useState(false);
@@ -149,6 +215,10 @@ function App() {
     setIsExpanded(!isExpanded);
   };
 
+  const handleSlideClick = (slideIndex: number) => {
+    setCurrentSlide(slideIndex);
+  };
+
   const containerClasses = [
     'presentation-container',
     isExpanded ? 'expanded' : ''
@@ -167,20 +237,46 @@ function App() {
         {...containerEvents}
         style={{ outline: 'none' }} // Убираем outline для фокуса
       >
-        {slides.map((slide, index) => (
-          <AnimatedSlide
-            key={slide.id}
-            slide={slide}
-            isActive={index === currentSlide}
-            animationType={index === 0 ? 'fade' : 'slide'}
-          />
-        ))}
+        {slides.map((slide, index) => {
+          // Специальные компоненты для сложных слайдов
+          switch (slide.id) {
+            case '4':
+              return <TechModernSlide key={slide.id} isActive={index === currentSlide} />;
+            case '5':
+              return <VisionSlide key={slide.id} isActive={index === currentSlide} />;
+            case '6':
+              return <SolutionSlide key={slide.id} isActive={index === currentSlide} />;
+            case '7':
+              return <LLMDataSlide key={slide.id} isActive={index === currentSlide} />;
+            case '8':
+              return <UIDashboardSlide key={slide.id} isActive={index === currentSlide} />;
+            case '9':
+              return <WhyNowSlide key={slide.id} isActive={index === currentSlide} />;
+            case '10':
+              return <RoadmapSlide key={slide.id} isActive={index === currentSlide} />;
+            case '11':
+              return <TeamSlide key={slide.id} isActive={index === currentSlide} />;
+            case '12':
+              return <QnASlide key={slide.id} isActive={index === currentSlide} />;
+            default:
+              // Базовые слайды для первых трех
+              return (
+                <AnimatedSlide
+                  key={slide.id}
+                  slide={slide}
+                  isActive={index === currentSlide}
+                  animationType={index === 0 ? 'fade' : 'slide'}
+                />
+              );
+          }
+        })}
       </div>
       
       <Navigation
         onNext={nextSlide}
         onPrev={prevSlide}
         onPlayPause={togglePlayPause}
+        onSlideClick={handleSlideClick}
         currentSlide={currentSlide}
         totalSlides={totalSlides}
         isPlaying={isPlaying}

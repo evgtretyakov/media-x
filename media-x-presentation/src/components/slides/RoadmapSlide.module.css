@@ -1,0 +1,200 @@
+.roadmapSlide {
+  /* Базовые стили для слайда Roadmap */
+}
+
+.roadmapContent {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.roadmapTimeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.phase {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.08));
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 25px;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+}
+
+.phase:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(254, 202, 87, 0.3);
+}
+
+.phaseHeader {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(254, 202, 87, 0.5);
+}
+
+.phaseNumber {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #feca57;
+  margin-bottom: 8px;
+  text-shadow: 0 0 10px rgba(254, 202, 87, 0.5);
+}
+
+.phaseTitle {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.phaseItems {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.phaseItem {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px 15px;
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  border-left: 3px solid #feca57;
+  transition: all 0.3s ease;
+}
+
+.phaseItem:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(5px);
+}
+
+.progressIndicator {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.progressBar {
+  width: 100%;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #48dbfb, #1dd1a1);
+  border-radius: 6px;
+  transition: width 1s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.progressFill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: progress-shine 2s ease-in-out infinite;
+}
+
+.progressLabel {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+/* Анимации для прогресс-бара */
+@keyframes progress-shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Анимации для фаз */
+@keyframes phase-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(254, 202, 87, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(254, 202, 87, 0.6);
+  }
+}
+
+.phase:hover {
+  animation: phase-glow 2s ease-in-out infinite;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .roadmapTimeline {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .phase {
+    padding: 20px;
+  }
+  
+  .phaseHeader {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+  }
+  
+  .phaseNumber {
+    font-size: 1rem;
+  }
+  
+  .phaseTitle {
+    font-size: 1.2rem;
+  }
+  
+  .phaseItem {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .progressBar {
+    height: 10px;
+  }
+  
+  .progressLabel {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .phase {
+    padding: 15px;
+  }
+  
+  .phaseHeader {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .phaseNumber {
+    font-size: 0.9rem;
+  }
+  
+  .phaseTitle {
+    font-size: 1.1rem;
+  }
+  
+  .phaseItem {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+}

@@ -1,0 +1,109 @@
+.llmDataSlide {
+  /* Базовые стили для слайда LLM Data */
+}
+
+.llmDataContent {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.metricCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.08));
+  padding: 30px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.metricCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(100, 149, 237, 0.3);
+}
+
+.metricValue {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #48dbfb;
+  margin-bottom: 10px;
+  text-shadow: 0 0 20px rgba(72, 219, 251, 0.6);
+}
+
+.metricLabel {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+.visualization {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.visualizationPlaceholder {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 80px 40px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.2rem;
+  font-weight: 500;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Анимации для метрик */
+@keyframes metric-glow {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(72, 219, 251, 0.6);
+  }
+  50% {
+    text-shadow: 0 0 40px rgba(72, 219, 251, 0.9);
+  }
+}
+
+.metricCard:hover .metricValue {
+  animation: metric-glow 2s ease-in-out infinite;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .metricsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .metricCard {
+    padding: 20px 15px;
+  }
+  
+  .metricValue {
+    font-size: 2rem;
+  }
+  
+  .metricLabel {
+    font-size: 1rem;
+  }
+  
+  .visualizationPlaceholder {
+    padding: 60px 30px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .metricsGrid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}

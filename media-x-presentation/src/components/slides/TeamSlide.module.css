@@ -1,0 +1,193 @@
+.teamSlide {
+  /* Базовые стили для слайда Team */
+}
+
+.teamContent {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.teamMember {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.08));
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 30px 25px;
+  text-align: center;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.teamMember:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(123, 104, 238, 0.4);
+}
+
+.teamMember::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.teamMember:hover::before {
+  opacity: 1;
+  animation: team-shine 2s ease-in-out infinite;
+}
+
+.memberAvatar {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 15px rgba(123, 104, 238, 0.6));
+  transition: all 0.3s ease;
+}
+
+.teamMember:hover .memberAvatar {
+  transform: scale(1.2) rotate(5deg);
+  filter: drop-shadow(0 0 25px rgba(123, 104, 238, 0.9));
+}
+
+.memberName {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 8px;
+}
+
+.memberRole {
+  font-size: 1rem;
+  color: #48dbfb;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(72, 219, 251, 0.5);
+}
+
+.collaboration {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 60px 40px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.collaborationPlaceholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* Анимации для команды */
+@keyframes team-shine {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+@keyframes team-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.teamMember:nth-child(1):hover {
+  animation: team-float 3s ease-in-out infinite;
+}
+
+.teamMember:nth-child(2):hover {
+  animation: team-float 3s ease-in-out infinite 0.5s;
+}
+
+.teamMember:nth-child(3):hover {
+  animation: team-float 3s ease-in-out infinite 1s;
+}
+
+.teamMember:nth-child(4):hover {
+  animation: team-float 3s ease-in-out infinite 1.5s;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .teamMember {
+    padding: 25px 20px;
+  }
+  
+  .memberAvatar {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+  }
+  
+  .memberName {
+    font-size: 1.1rem;
+  }
+  
+  .memberRole {
+    font-size: 0.9rem;
+  }
+  
+  .collaboration {
+    padding: 40px 20px;
+  }
+  
+  .collaborationPlaceholder {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .teamGrid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .teamMember {
+    padding: 20px 15px;
+  }
+  
+  .memberAvatar {
+    font-size: 2.5rem;
+  }
+  
+  .memberName {
+    font-size: 1rem;
+  }
+  
+  .memberRole {
+    font-size: 0.85rem;
+  }
+  
+  .collaboration {
+    padding: 30px 15px;
+  }
+  
+  .collaborationPlaceholder {
+    font-size: 1rem;
+  }
+}

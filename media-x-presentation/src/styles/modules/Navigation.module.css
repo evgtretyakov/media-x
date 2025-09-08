@@ -93,6 +93,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  margin: 0 20px;
 }
 
 .currentSlide {
@@ -104,6 +105,55 @@
 .totalSlides {
   color: var(--text-secondary);
   font-size: 1.1rem;
+}
+
+/* Slide dots container */
+.slideDotsContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 300px;
+}
+
+/* Slide dot indicator */
+.slideDot {
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(102, 126, 234, 0.3);
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideDot:hover {
+  background: rgba(102, 126, 234, 0.6);
+  transform: scale(1.2);
+}
+
+.slideDot.active {
+  background: #667eea;
+  transform: scale(1.3);
+}
+
+.slideDot.active .dotInner {
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  display: block;
+}
+
+.slideDot .dotInner {
+  display: none;
 }
 
 /* Progress bar */
@@ -135,8 +185,9 @@
 /* Responsive design */
 @media (max-width: 768px) {
   .navigation {
-    gap: 25px;
+    gap: 20px;
     height: 80px;
+    padding: 0 10px;
   }
   
   .navBtn {
@@ -147,31 +198,93 @@
   
   .slideIndicator {
     font-size: 1.2rem;
+    margin: 0 15px;
   }
   
   .currentSlide {
     font-size: 1.3rem;
   }
+
+  .slideDotsContainer {
+    gap: 6px;
+    margin: 0 15px;
+    max-width: 250px;
+  }
+
+  .slideDot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .slideDot.active {
+    transform: scale(1.2);
+  }
 }
 
 @media (max-width: 480px) {
   .navigation {
-    gap: 15px;
+    gap: 12px;
     height: 70px;
+    padding: 0 8px;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
   
   .navBtn {
     width: var(--nav-btn-size-sm);
     height: var(--nav-btn-size-sm);
     font-size: 1.1rem;
+    order: 1;
   }
   
   .slideIndicator {
     font-size: 1.1rem;
+    margin: 0 10px;
+    order: 3;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
   }
   
   .currentSlide {
     font-size: 1.2rem;
+  }
+
+  .slideDotsContainer {
+    gap: 4px;
+    margin: 0 10px;
+    max-width: 200px;
+    order: 2;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 5px 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .slideDotsContainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .slideDot {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+  }
+
+  .slideDot.active {
+    transform: scale(1.1);
+  }
+
+  /* Скрываем индикаторы на очень маленьких экранах */
+  @media (max-width: 320px) {
+    .slideDotsContainer {
+      display: none;
+    }
+    
+    .slideIndicator {
+      order: 2;
+    }
   }
 }
 

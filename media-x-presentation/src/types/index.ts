@@ -17,6 +17,7 @@ export interface NavigationProps {
   onNext: () => void;
   onPrev: () => void;
   onPlayPause: () => void;
+  onSlideClick?: (slideIndex: number) => void;
   currentSlide: number;
   totalSlides: number;
   isPlaying: boolean;

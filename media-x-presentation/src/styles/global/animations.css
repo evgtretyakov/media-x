@@ -300,3 +300,179 @@
     transform: translateY(0);
   }
 }
+
+/* Tech specific animations from original project */
+@keyframes tech-title-glow-pulse {
+  0% {
+    text-shadow: 0 0 40px rgba(72, 219, 251, 0.5),
+                 0 0 70px rgba(255, 159, 243, 0.4),
+                 0 0 100px rgba(255, 107, 107, 0.3);
+  }
+  100% {
+    text-shadow: 0 0 60px rgba(72, 219, 251, 0.6),
+                 0 0 90px rgba(255, 159, 243, 0.5),
+                 0 0 130px rgba(255, 107, 107, 0.4);
+  }
+}
+
+@keyframes tech-icon-float {
+  0%, 100% {
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg) scale(1);
+    filter: drop-shadow(0 0 15px currentColor);
+  }
+  25% {
+    transform: translateY(-15px) rotateX(15deg) rotateY(30deg) scale(1.1);
+    filter: drop-shadow(0 0 20px currentColor);
+  }
+  50% {
+    transform: translateY(0px) rotateX(0deg) rotateY(60deg) scale(1.05);
+    filter: drop-shadow(0 0 25px currentColor);
+  }
+  75% {
+    transform: translateY(15px) rotateX(-15deg) rotateY(30deg) scale(0.95);
+    filter: drop-shadow(0 0 20px currentColor);
+  }
+}
+
+@keyframes tech-particle-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 0.5;
+  }
+  25% {
+    transform: translate(20px, -20px) scale(1.4) rotate(90deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(40px, 0px) scale(1.2) rotate(180deg);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translate(20px, 20px) scale(1.5) rotate(270deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes tech-grid-move {
+  0% {
+    transform: rotate(45deg) translateX(0%) translateY(0%);
+  }
+  100% {
+    transform: rotate(45deg) translateX(50%) translateY(50%);
+  }
+}
+
+/* Passage indexing animations */
+@keyframes tech-title-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-70px) scale(0.7) rotateX(-40deg);
+    filter: blur(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+    filter: blur(0);
+  }
+}
+
+@keyframes tech-subtitle-appear {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes tech-card-appear {
+  from {
+    opacity: 0;
+    transform: translateY(60px) rotateX(-20deg) scale(0.8);
+    filter: blur(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Scale in animation */
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Metrics specific animations */
+@keyframes metrics-title-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.8);
+    filter: blur(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes metrics-subtitle-appear {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes metric-card-appear {
+  from {
+    opacity: 0;
+    transform: translateY(40px) rotateX(-15deg) scale(0.9);
+    filter: blur(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes metrics-visual-appear {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Support for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

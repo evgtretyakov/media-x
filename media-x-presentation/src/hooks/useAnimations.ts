@@ -69,7 +69,35 @@ export const useSpecificSlideAnimations = () => {
     useEffect(() => {
       if (isActive) {
         console.log('📊 Запуск анимаций для слайда метрик');
-        // TODO: Реализовать специфичные анимации для слайда метрик
+        // Анимации реализованы в компоненте MetricsAnimations
+      }
+    }, [isActive]);
+
+    return { isActive };
+  }, [currentSlide]);
+
+  // Анимации для слайда технологического стека
+  const useTechAnimations = useCallback(() => {
+    const isActive = currentSlide === 8; // Девятый слайд (0-based)
+
+    useEffect(() => {
+      if (isActive) {
+        console.log('⚡ Запуск анимаций для слайда технологического стека');
+        // Анимации реализованы в компоненте TechAnimations
+      }
+    }, [isActive]);
+
+    return { isActive };
+  }, [currentSlide]);
+
+  // Анимации для слайда Вижн
+  const useVisionAnimations = useCallback(() => {
+    const isActive = currentSlide === 3; // Четвертый слайд (0-based)
+
+    useEffect(() => {
+      if (isActive) {
+        console.log('👁️ Запуск анимаций для слайда Вижн');
+        // Анимации реализованы в компоненте VisionAnimations
       }
     }, [isActive]);
 
@@ -78,7 +106,9 @@ export const useSpecificSlideAnimations = () => {
 
   return {
     useChallengeAnimations,
-    useMetricsAnimations
+    useMetricsAnimations,
+    useTechAnimations,
+    useVisionAnimations
   };
 };
 

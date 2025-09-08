@@ -1,0 +1,178 @@
+.whyNowSlide {
+  /* Базовые стили для слайда Why Now */
+}
+
+.whyNowContent {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto 50px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #48dbfb, #ff6b6b, #feca57);
+  z-index: 1;
+}
+
+.timelineItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.timelineDot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #48dbfb, #1dd1a1);
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 20px rgba(72, 219, 251, 0.6);
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.timelineItem:hover .timelineDot {
+  transform: scale(1.3);
+  box-shadow: 0 0 30px rgba(72, 219, 251, 0.9);
+}
+
+.timelineContent {
+  text-align: center;
+  padding: 0 10px;
+}
+
+.timelineYear {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #48dbfb;
+  margin-bottom: 8px;
+  text-shadow: 0 0 15px rgba(72, 219, 251, 0.5);
+}
+
+.timelineText {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.4;
+  max-width: 180px;
+}
+
+.growthChart {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 60px 40px;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.chartPlaceholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* Анимации для временной линии */
+@keyframes timeline-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(72, 219, 251, 0.6);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(72, 219, 251, 0.9);
+  }
+}
+
+.timelineItem:nth-child(1):hover .timelineDot {
+  animation: timeline-pulse 2s ease-in-out infinite;
+}
+
+.timelineItem:nth-child(2):hover .timelineDot {
+  animation: timeline-pulse 2s ease-in-out infinite 0.5s;
+}
+
+.timelineItem:nth-child(3):hover .timelineDot {
+  animation: timeline-pulse 2s ease-in-out infinite 1s;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .timeline {
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+  }
+  
+  .timeline::before {
+    display: none;
+  }
+  
+  .timelineItem {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+  
+  .timelineContent {
+    text-align: left;
+    flex: 1;
+  }
+  
+  .timelineYear {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .timelineText {
+    font-size: 0.9rem;
+    max-width: none;
+  }
+  
+  .growthChart {
+    padding: 40px 20px;
+  }
+  
+  .chartPlaceholder {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timelineItem {
+    gap: 15px;
+  }
+  
+  .timelineDot {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .timelineYear {
+    font-size: 1.1rem;
+  }
+  
+  .timelineText {
+    font-size: 0.85rem;
+  }
+}

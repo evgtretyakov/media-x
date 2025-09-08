@@ -1,0 +1,209 @@
+.qnaSlide {
+  /* Базовые стили для слайда Q&A */
+}
+
+.qnaContent {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.contactInfo {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.contactItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.08));
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 25px 30px;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+.contactItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(138, 43, 226, 0.4);
+}
+
+.contactIcon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 15px rgba(138, 43, 226, 0.6));
+  transition: all 0.3s ease;
+}
+
+.contactItem:hover .contactIcon {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 25px rgba(138, 43, 226, 0.9));
+}
+
+.contactText {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  text-align: center;
+}
+
+.qnaSection {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 60px 40px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.qnaPlaceholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.socialLink {
+  background: linear-gradient(135deg, rgba(72, 219, 251, 0.2), rgba(29, 209, 161, 0.2));
+  border: 1px solid rgba(72, 219, 251, 0.4);
+  border-radius: 15px;
+  padding: 15px 25px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+  text-align: center;
+}
+
+.socialLink:hover {
+  background: linear-gradient(135deg, rgba(72, 219, 251, 0.3), rgba(29, 209, 161, 0.3));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(72, 219, 251, 0.4);
+}
+
+/* Анимации для контактных элементов */
+@keyframes contact-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.contactItem:hover {
+  animation: contact-bounce 1s ease;
+}
+
+@keyframes social-pulse {
+  0%, 100% {
+    box-shadow: 0 8px 25px rgba(72, 219, 251, 0.4);
+  }
+  50% {
+    box-shadow: 0 12px 35px rgba(72, 219, 251, 0.6);
+  }
+}
+
+.socialLink:hover {
+  animation: social-pulse 2s ease-in-out infinite;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .contactInfo {
+    gap: 20px;
+  }
+  
+  .contactItem {
+    padding: 20px 25px;
+    min-width: 160px;
+  }
+  
+  .contactIcon {
+    font-size: 2rem;
+  }
+  
+  .contactText {
+    font-size: 1rem;
+  }
+  
+  .qnaSection {
+    padding: 40px 20px;
+  }
+  
+  .qnaPlaceholder {
+    font-size: 1.1rem;
+  }
+  
+  .socialLinks {
+    gap: 15px;
+  }
+  
+  .socialLink {
+    padding: 12px 20px;
+    min-width: 80px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactInfo {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .contactItem {
+    width: 100%;
+    max-width: 250px;
+    padding: 15px 20px;
+  }
+  
+  .contactIcon {
+    font-size: 1.8rem;
+  }
+  
+  .contactText {
+    font-size: 0.9rem;
+  }
+  
+  .qnaSection {
+    padding: 30px 15px;
+  }
+  
+  .qnaPlaceholder {
+    font-size: 1rem;
+  }
+  
+  .socialLinks {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .socialLink {
+    width: 100%;
+    max-width: 200px;
+    padding: 10px 15px;
+  }
+}

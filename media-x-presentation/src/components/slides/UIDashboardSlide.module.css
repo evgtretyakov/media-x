@@ -1,0 +1,166 @@
+.uiDashboardSlide {
+  /* Базовые стили для слайда UI Dashboard */
+}
+
+.dashboardContent {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.dashboardLayout {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.dashboardHeader {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1));
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.headerPlaceholder {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.dashboardBody {
+  display: flex;
+  min-height: 400px;
+}
+
+.sidebar {
+  width: 200px;
+  background: rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 20px 0;
+}
+
+.sidebarItem {
+  padding: 15px 20px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.sidebarItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-left-color: #48dbfb;
+  color: #ffffff;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.widgetRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.widget {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.widget:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.chartArea {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chartPlaceholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .dashboardBody {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 0;
+  }
+  
+  .sidebarItem {
+    padding: 12px 20px;
+    display: inline-block;
+    margin: 0 10px;
+    border-left: none;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .sidebarItem:hover {
+    border-left-color: transparent;
+    border-bottom-color: #48dbfb;
+  }
+  
+  .widgetRow {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .widget {
+    min-height: 60px;
+    padding: 15px;
+  }
+  
+  .chartArea {
+    min-height: 200px;
+  }
+}
+
+/* Анимации для интерактивных элементов */
+@keyframes widget-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(72, 219, 251, 0);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(72, 219, 251, 0.4);
+  }
+}
+
+.widget:hover {
+  animation: widget-pulse 2s ease-in-out infinite;
+}

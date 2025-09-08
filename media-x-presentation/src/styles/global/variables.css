@@ -5,28 +5,70 @@
   --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   --accent-color: #ff6b6b;
   
+  /* Modern Tech Colors */
+  --tech-blue: #48dbfb;
+  --tech-pink: #ff9ff3;
+  --tech-red: #ff6b6b;
+  --tech-yellow: #feca57;
+  --tech-green: #1dd1a1;
+  --tech-purple: #764ba2;
+  
+  /* Gradient Combinations */
+  --gradient-tech: linear-gradient(135deg, var(--tech-blue), var(--tech-pink), var(--tech-red), var(--tech-yellow), var(--tech-green));
+  --gradient-modern: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c);
+  --gradient-deep: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(30, 30, 60, 0.95), rgba(0, 0, 0, 0.95));
+  
   /* Text Colors */
   --text-primary: #2d3748;
   --text-secondary: #718096;
+  --text-light: #ffffff;
+  --text-dark: #000000;
   
   /* Background Colors */
   --bg-white: rgba(255, 255, 255, 0.98);
   --bg-dark: rgba(0, 0, 0, 0.9);
+  --bg-glass: rgba(255, 255, 255, 0.1);
+  --bg-glass-dark: rgba(0, 0, 0, 0.8);
+  
+  /* Card Backgrounds */
+  --card-bg-light: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  --card-bg-dark: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
+  --card-bg-tech: linear-gradient(135deg, rgba(72, 219, 251, 0.1), rgba(255, 159, 243, 0.1));
   
   /* Shadows */
   --shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   --shadow-hover: 0 25px 50px rgba(0, 0, 0, 0.4);
   --shadow-nav: 0 8px 25px rgba(102, 126, 234, 0.4);
+  --shadow-tech: 0 25px 50px rgba(72, 219, 251, 0.3);
+  --shadow-glow: 0 0 40px rgba(72, 219, 251, 0.5);
   
   /* Sizes */
   --nav-btn-size: 65px;
   --nav-btn-size-md: 55px;
   --nav-btn-size-sm: 45px;
+  --card-radius: 25px;
+  --card-radius-md: 20px;
+  --card-radius-sm: 15px;
+  
+  /* Spacing */
+  --spacing-xl: 60px;
+  --spacing-lg: 40px;
+  --spacing-md: 25px;
+  --spacing-sm: 15px;
+  --spacing-xs: 10px;
   
   /* Transitions */
   --transition-base: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: all 0.8s ease;
   --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-tech: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Z-index layers */
+  --z-background: -1;
+  --z-base: 1;
+  --z-content: 10;
+  --z-overlay: 100;
+  --z-modal: 1000;
 }
 
 /* Dark theme variables */
