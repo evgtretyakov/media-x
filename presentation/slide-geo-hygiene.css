@@ -1,0 +1,431 @@
+/* Современный стиль для слайда "Гигиена GEO AD" */
+.geo-hygiene-slide {
+    padding: 30px 20px !important;
+    background: linear-gradient(135deg,
+        rgba(10, 25, 47, 0.95) 0%,
+        rgba(30, 60, 114, 0.95) 50%,
+        rgba(10, 25, 47, 0.95) 100%);
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.geo-hygiene-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(0, 184, 212, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 64, 129, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(101, 31, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.geo-hygiene-slide::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.02), transparent);
+    transform: rotate(45deg);
+    animation: grid-move 20s linear infinite;
+    pointer-events: none;
+}
+
+.geo-hygiene-header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.geo-hygiene-title {
+    font-size: 2.8rem !important;
+    font-weight: 900 !important;
+    background: linear-gradient(135deg, #00bcd4, #651fff, #ff4081, #ffc107);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px !important;
+    letter-spacing: -0.5px;
+    text-shadow: 0 0 20px rgba(0, 184, 212, 0.3),
+                 0 0 40px rgba(101, 31, 255, 0.2),
+                 0 0 60px rgba(255, 64, 129, 0.1);
+    animation: title-glow 3s ease-in-out infinite alternate;
+}
+
+.geo-hygiene-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.geo-hygiene-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.geo-feature-card:nth-child(4) {
+    /*grid-column: 1 / -1;*/
+    /*max-width: 700px;*/
+    margin: 0 auto;
+    justify-self: center;
+}
+
+.geo-feature-card {
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%);
+    padding: 30px 25px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(25px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.geo-feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        transparent);
+    transition: left 0.8s ease;
+}
+
+.geo-feature-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    border-color: rgba(0, 184, 212, 0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 0 2px rgba(0, 184, 212, 0.3),
+                0 0 35px rgba(0, 184, 212, 0.3);
+}
+
+.geo-feature-card:hover::before {
+    left: 100%;
+}
+
+.geo-card-icon {
+    font-size: 3rem;
+    margin-bottom: -10px;
+    display: inline-block;
+    animation: float 4s ease-in-out infinite;
+    text-shadow: 0 0 20px currentColor;
+}
+
+.geo-card-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #00bcd4, #651fff, #ff4081);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.2px;
+}
+
+.geo-card-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.geo-card-highlight {
+    display: inline-block;
+    background: linear-gradient(135deg,
+        rgba(0, 184, 212, 0.2),
+        rgba(101, 31, 255, 0.2));
+    padding: 8px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+/* Плавающие элементы для карточек */
+.geo-feature-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(0, 184, 212, 0.25) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: particle-float 8s ease-in-out infinite;
+    z-index: -1;
+}
+
+.geo-feature-card:nth-child(even)::after {
+    top: 60%;
+    left: -30%;
+    animation-delay: 2s;
+    background: radial-gradient(circle, rgba(255, 64, 129, 0.25) 0%, transparent 70%);
+}
+
+.geo-feature-card:nth-child(3)::after {
+    top: 20%;
+    right: -20%;
+    animation-delay: 4s;
+    background: radial-gradient(circle, rgba(101, 31, 255, 0.25) 0%, transparent 70%);
+}
+
+.geo-feature-card:nth-child(4)::after {
+    bottom: -40%;
+    left: -20%;
+    animation-delay: 6s;
+    background: radial-gradient(circle, rgba(255, 193, 7, 0.25) 0%, transparent 70%);
+}
+
+/* Анимации появления для слайда */
+.geo-hygiene-slide.active .geo-hygiene-title {
+    animation: slide-in-from-top 0.8s ease-out 0.4s both,
+               title-glow 3s ease-in-out 1.2s infinite alternate;
+}
+
+.geo-hygiene-slide.active .geo-hygiene-subtitle {
+    animation: slide-in-from-bottom 0.8s ease-out 0.6s both;
+}
+
+.geo-hygiene-slide.active .geo-feature-card:nth-child(1) {
+    animation: slide-in-from-left 0.8s ease-out 0.8s both;
+}
+
+.geo-hygiene-slide.active .geo-feature-card:nth-child(2) {
+    animation: slide-in-from-right 0.8s ease-out 1.0s both;
+}
+
+.geo-hygiene-slide.active .geo-feature-card:nth-child(3) {
+    animation: slide-in-from-left 0.8s ease-out 1.2s both;
+}
+
+.geo-hygiene-slide.active .geo-feature-card:nth-child(4) {
+    animation: slide-in-from-right 0.8s ease-out 1.4s both;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .geo-hygiene-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 700px;
+    }
+    
+    .geo-feature-card:nth-child(4) {
+        grid-column: 1;
+        max-width: none;
+    }
+    
+    .geo-hygiene-title {
+        font-size: 2.4rem !important;
+    }
+    
+    .geo-hygiene-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .geo-feature-card {
+        min-height: 200px;
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .geo-hygiene-slide {
+        padding: 25px 15px !important;
+    }
+    
+    .geo-hygiene-title {
+        font-size: 2rem !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .geo-hygiene-subtitle {
+        font-size: 1rem;
+    }
+    
+    .geo-hygiene-header {
+        margin-bottom: 30px;
+    }
+    
+    .geo-feature-card {
+        padding: 22px 18px;
+        min-height: 180px;
+        border-radius: 20px;
+    }
+    
+    .geo-card-icon {
+        font-size: 2.5rem;
+        margin-bottom: 8px;
+    }
+    
+    .geo-card-title {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+    }
+    
+    .geo-card-description {
+        font-size: 0.95rem;
+        margin-bottom: 16px;
+        line-height: 1.5;
+    }
+    
+    .geo-card-highlight {
+        padding: 6px 14px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .geo-hygiene-title {
+        font-size: 1.7rem !important;
+    }
+    
+    .geo-hygiene-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .geo-feature-card {
+        padding: 18px 15px;
+        min-height: 160px;
+        border-radius: 18px;
+    }
+    
+    .geo-card-icon {
+        font-size: 2.2rem;
+        margin-bottom: 6px;
+    }
+    
+    .geo-card-title {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    
+    .geo-card-description {
+        font-size: 0.9rem;
+        margin-bottom: 14px;
+        line-height: 1.4;
+    }
+    
+    .geo-card-highlight {
+        padding: 5px 12px;
+        font-size: 0.8rem;
+        border-radius: 10px;
+    }
+}
+
+/* Импорт общих анимаций */
+@keyframes title-glow {
+    0% {
+        text-shadow: 0 0 30px rgba(0, 184, 212, 0.3),
+                     0 0 60px rgba(101, 31, 255, 0.2),
+                     0 0 90px rgba(255, 64, 129, 0.1);
+    }
+    100% {
+        text-shadow: 0 0 40px rgba(0, 184, 212, 0.4),
+                     0 0 80px rgba(101, 31, 255, 0.3),
+                     0 0 120px rgba(255, 64, 129, 0.2);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes particle-float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translate(25px, -25px) scale(1.3);
+        opacity: 0.7;
+    }
+}
+
+@keyframes slide-in-from-right {
+    from {
+        opacity: 0;
+        transform: translateX(60px) rotate(5deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
+@keyframes slide-in-from-left {
+    from {
+        opacity: 0;
+        transform: translateX(-60px) rotate(-5deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
+@keyframes slide-in-from-top {
+    from {
+        opacity: 0;
+        transform: translateY(-60px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes slide-in-from-bottom {
+    from {
+        opacity: 0;
+        transform: translateY(60px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes grid-move {
+    0% {
+        transform: rotate(45deg) translateX(0%) translateY(0%);
+    }
+    100% {
+        transform: rotate(45deg) translateX(50%) translateY(50%);
+    }
+}

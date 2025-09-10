@@ -76,13 +76,22 @@
 }
 
 .tech-modern-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 25px;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
+}
+
+/* Простое решение для центрирования последних двух блоков */
+.tech-modern-content {
+    justify-content: center;
+}
+
+.tech-modern-content .tech-category-modern {
+    width: 380px;
 }
 
 .tech-category-modern {
