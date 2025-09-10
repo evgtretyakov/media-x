@@ -1,0 +1,217 @@
+/* Стили для слайда Пароходного эффекта */
+.steamship-effect-slide {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #ffffff;
+    padding: 2rem;
+}
+
+.steamship-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.steamship-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #00b4d8, #0077b6, #03045e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 30px rgba(0, 180, 216, 0.3);
+}
+
+.steamship-subtitle {
+    font-size: 1.4rem;
+    color: #90e0ef;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+.steamship-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.steamship-explanation {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 180, 216, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.steamship-explanation h3 {
+    color: #00b4d8;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.steamship-explanation p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #e0f7fa;
+    margin-bottom: 1.5rem;
+}
+
+.steamship-features {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.steamship-feature {
+    background: linear-gradient(135deg, rgba(0, 180, 216, 0.1), rgba(0, 119, 182, 0.1));
+    padding: 1.5rem;
+    border-radius: 15px;
+    border-left: 4px solid #00b4d8;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.steamship-feature:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 180, 216, 0.2);
+}
+
+.steamship-feature h4 {
+    color: #00b4d8;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.steamship-feature p {
+    color: #caf0f8;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.steamship-visual {
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 180, 216, 0.1);
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.steamship-diagram {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.diagram-item {
+    background: linear-gradient(135deg, #0077b6, #0096c7);
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(0, 119, 182, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.diagram-item:hover {
+    transform: scale(1.05);
+}
+
+.diagram-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #00b4d8;
+}
+
+.steamship-impact {
+    background: rgba(0, 180, 216, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 180, 216, 0.3);
+}
+
+.steamship-impact h4 {
+    color: #00b4d8;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.steamship-impact ul {
+    list-style: none;
+    padding: 0;
+}
+
+.steamship-impact li {
+    color: #caf0f8;
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.steamship-impact li:before {
+    content: "⚡";
+    position: absolute;
+    left: 0;
+    color: #00b4d8;
+}
+
+/* Анимации */
+@keyframes steamship-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(0, 180, 216, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(0, 180, 216, 0.6); }
+}
+
+.steamship-feature {
+    animation: steamship-glow 3s ease-in-out infinite;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .steamship-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .steamship-title {
+        font-size: 2.5rem;
+    }
+    
+    .steamship-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .steamship-diagram {
+        grid-template-columns: 1fr;
+    }
+    
+    .diagram-arrow {
+        transform: rotate(90deg);
+        margin: 1rem 0;
+    }
+}
+
+/* Эффекты для современного вида */
+.steamship-effect-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #00b4d8, transparent);
+    animation: scanline 3s linear infinite;
+}
+
+@keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+}

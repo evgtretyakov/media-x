@@ -159,6 +159,7 @@
 
 .metric-stats {
     display: flex;
+    display: none !important;
     justify-content: center;
     gap: 15px;
     flex-wrap: wrap;
